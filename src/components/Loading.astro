@@ -21,9 +21,14 @@
 
     document.body.style.overflow = 'hidden';
 
+    // Add loading-complete early so hero can start animating
+    // The loading overlay will still play its animation on top
+    setTimeout(() => {
+      document.body.classList.add('loading-complete');
+    }, 300);
+
     const tl = gsap.timeline({
       onComplete: () => {
-        document.body.classList.add('loading-complete');
         document.body.style.overflow = '';
       }
     });
@@ -31,17 +36,17 @@
     tl
     .from(content, {
       opacity: 0,
-      duration: 0.4,
+      duration: 0.3,
       ease: 'power2.out'
     })
     .to(content, {
       opacity: 0,
-      duration: 0.3,
-      delay: 0.6
+      duration: 0.2,
+      delay: 0.3
     })
     .to(loading, {
       opacity: 0,
-      duration: 0.5,
+      duration: 0.4,
       ease: 'power2.inOut'
     }, '-=0.1')
     .set(loading, { display: 'none' });

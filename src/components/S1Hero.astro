@@ -111,8 +111,8 @@
         <div class="decor-line-right"></div>
       </div>
 
-      <!-- Scramble Text Subtitle -->
-      <p class="hero-sub font-serif text-sm md:text-base tracking-[0.4em] text-accent-gold mb-8 opacity-0">
+      <!-- Scramble Text Subtitle - visible immediately for LCP -->
+      <p class="hero-sub font-serif text-sm md:text-base tracking-[0.4em] text-accent-gold mb-8">
         <span class="hero-sub-text scramble-text" data-text="LIVIO GRAND TOWER AZABU">LIVIO GRAND TOWER AZABU</span>
       </p>
 
@@ -377,36 +377,30 @@
       }, 0.5);
 
       // Character-by-character reveal for main text
+      // Note: Initial opacity is handled by CSS for better LCP
       heroChars.forEach((char, i) => {
         const el = char as HTMLElement;
         const isAccent = el.classList.contains('hero-char-accent');
-        const delay = 1.0 + i * 0.08;
+        const delay = 0.3 + i * 0.06;
 
-        // Initial state
-        gsap.set(el, {
-          opacity: 0,
-          y: 60,
-          rotateX: -90,
-          scale: 0.5
-        });
-
-        // Animate in
-        tl.to(el, {
-          opacity: 1,
-          y: 0,
-          rotateX: 0,
-          scale: 1,
-          duration: 0.6,
-          ease: 'back.out(1.7)',
-          onStart: () => {
-            glitchChar(el);
-          },
-          onComplete: () => {
-            if (isAccent) {
-              goldenPulse(el);
+        // Animate with GSAP enhancement (CSS already shows basic animation)
+        tl.fromTo(el,
+          { y: 30, rotateX: -45, scale: 0.9 },
+          {
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: 'back.out(1.5)',
+            onStart: () => {
+              glitchChar(el);
+            },
+            onComplete: () => {
+              if (isAccent) {
+                goldenPulse(el);
+              }
             }
-          }
-        }, delay);
+          }, delay);
       });
 
       // Bottom decoration
@@ -497,6 +491,34 @@
 
   .parallax-back {
     transform: translateZ(-50px) scale(1.15);
+  }
+
+  /* ========================================
+     LCP OPTIMIZATION - CSS-first visibility
+     ======================================== */
+  .hero-sub {
+    animation: heroFadeIn 0.6s ease-out 0.3s both;
+  }
+
+  .hero-char {
+    animation: heroCharIn 0.5s ease-out both;
+    animation-delay: calc(var(--char-index, 0) * 0.08s + 0.5s);
+  }
+
+  @keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes heroCharIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* When JS is ready, it will override these animations */
+  .js-ready .hero-sub,
+  .js-ready .hero-char {
+    animation: none;
   }
 
   /* ========================================
