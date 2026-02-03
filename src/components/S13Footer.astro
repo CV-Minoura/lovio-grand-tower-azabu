@@ -1,10 +1,7 @@
 ---
-// S13. Footer Component
-// Premium Footer with Parallax, Link Animations, Reveal Effects
 ---
 
 <footer id="footer" data-section="P1-S13" class="bg-background border-t border-accent-gold/30 relative overflow-hidden">
-  <!-- Background Pattern -->
   <div class="footer-bg absolute inset-0 opacity-5 pointer-events-none">
     <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(201,169,110,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
   </div>
@@ -61,13 +58,16 @@
       </p>
     </div>
 
-    <!-- Copyright -->
     <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="footer-copyright text-xs text-text-secondary opacity-0">
-        &copy; 2026 LIVIO GRAND TOWER AZABU All Rights Reserved.
-      </p>
+      <div class="footer-copyright opacity-0">
+        <p class="text-xs text-text-secondary">
+          &copy; 2026 LIVIO GRAND TOWER AZABU All Rights Reserved.
+        </p>
+        <p class="text-xs text-text-secondary mt-1">
+          Crafted by <a href="https://moqo.jp" target="_blank" rel="noopener" class="text-accent-gold hover:text-accent-light transition-colors">MOQO</a>
+        </p>
+      </div>
 
-      <!-- Back to Top -->
       <button id="back-to-top" class="back-to-top flex items-center gap-2 text-text-secondary hover:text-accent-gold transition-colors group opacity-0">
         <span class="text-xs tracking-wider">PAGE TOP</span>
         <span class="back-to-top-icon relative w-8 h-8 border border-current rounded-full flex items-center justify-center overflow-hidden">

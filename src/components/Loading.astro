@@ -1,68 +1,60 @@
 ---
-// Loading Screen Component
-// シンプル＆エレガント
 ---
 
-<div id="loading" class="loading fixed inset-0 z-[9999] flex items-center justify-center bg-background">
-  <!-- Minimal Logo -->
-  <div class="loading-content text-center">
-    <p class="font-serif text-sm tracking-[0.3em] text-accent-gold">LIVIO GRAND TOWER</p>
-  </div>
+<div id="loading" class="loading">
+  <p class="loading-text">LIVIO GRAND TOWER</p>
 </div>
 
 <script>
-  import { gsap } from 'gsap';
+  // Instant loading-complete for hero to start immediately
+  document.body.classList.add('loading-complete');
 
-  const initLoading = () => {
-    const loading = document.getElementById('loading');
-    const content = document.querySelector('.loading-content');
-
-    if (!loading) return;
-
-    document.body.style.overflow = 'hidden';
-
-    // Add loading-complete early so hero can start animating
-    // The loading overlay will still play its animation on top
-    setTimeout(() => {
-      document.body.classList.add('loading-complete');
-    }, 300);
-
-    const tl = gsap.timeline({
-      onComplete: () => {
-        document.body.style.overflow = '';
-      }
+  // Remove loading screen after brief CSS animation
+  const loading = document.getElementById('loading');
+  if (loading) {
+    loading.addEventListener('animationend', () => {
+      loading.style.display = 'none';
     });
-
-    tl
-    .from(content, {
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.out'
-    })
-    .to(content, {
-      opacity: 0,
-      duration: 0.2,
-      delay: 0.3
-    })
-    .to(loading, {
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power2.inOut'
-    }, '-=0.1')
-    .set(loading, { display: 'none' });
-  };
-
-  document.addEventListener('DOMContentLoaded', initLoading);
+  }
 </script>
 
 <style>
   .loading {
-    will-change: opacity;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0A0A0F;
+    animation: loadingFade 0.3s ease-out forwards;
+  }
+
+  .loading-text {
+    font-family: "Cormorant Garamond", "Hiragino Mincho ProN", serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+    color: #C9A96E;
+    animation: textPulse 0.4s ease-out;
+  }
+
+  @keyframes loadingFade {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  @keyframes textPulse {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .loading {
-      transition: none !important;
+      animation: none;
+      display: none;
     }
   }
 </style>

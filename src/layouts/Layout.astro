@@ -25,8 +25,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Preload: Hero Image (LCP) -->
-    <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" fetchpriority="high" />
+    <!-- Preload: Hero Image (LCP) - responsive -->
+    <link rel="preload" as="image" href="/images/hero.webp" imagesrcset="/images/hero-480.webp 480w, /images/hero-768.webp 768w, /images/hero-1200.webp 1200w, /images/hero.webp 1920w" imagesizes="100vw" type="image/webp" fetchpriority="high" />
 
     <!-- Preconnect: Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -95,36 +95,42 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
   <body>
     <slot />
 
-    <!-- Lenis Smooth Scroll & GSAP Initialization - deferred -->
+    <!-- Lenis Smooth Scroll & GSAP Initialization - deferred for better LCP -->
     <script>
-      import Lenis from 'lenis';
-      import { gsap } from 'gsap';
-      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      // Defer heavy library initialization until after first paint
+      const initSmoothScroll = async () => {
+        const { default: Lenis } = await import('lenis');
+        const { gsap } = await import('gsap');
+        const { ScrollTrigger } = await import('gsap/ScrollTrigger');
 
-      gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger);
 
-      // Initialize Lenis
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-      });
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          touchMultiplier: 2,
+        });
 
-      // Connect Lenis to GSAP ScrollTrigger
-      lenis.on('scroll', ScrollTrigger.update);
+        lenis.on('scroll', ScrollTrigger.update);
 
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
+        gsap.ticker.add((time: number) => {
+          lenis.raf(time * 1000);
+        });
 
-      gsap.ticker.lagSmoothing(0);
+        gsap.ticker.lagSmoothing(0);
+        (window as any).lenis = lenis;
+      };
 
-      // Make Lenis globally available
-      (window as any).lenis = lenis;
+      // Initialize after first paint using requestIdleCallback or setTimeout fallback
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => initSmoothScroll());
+      } else {
+        setTimeout(initSmoothScroll, 100);
+      }
     </script>
   </body>
 </html>

@@ -1,7 +1,4 @@
 ---
-// S1. Hero (First View) Component
-// フルスクリーン静止画 + シネマティックアニメーション（Ultimate版）
-// メインコピー超プレミアム演出
 ---
 
 <section id="hero" data-section="P1-S1" class="relative h-screen w-full overflow-hidden perspective-container">
@@ -12,6 +9,8 @@
       <div class="hero-bg absolute inset-0">
         <img
           src="/images/hero.webp"
+          srcset="/images/hero-480.webp 480w, /images/hero-768.webp 768w, /images/hero-1200.webp 1200w, /images/hero.webp 1920w"
+          sizes="100vw"
           alt="LIVIO GRAND TOWER AZABU"
           class="w-full h-full object-cover"
           width="1920"

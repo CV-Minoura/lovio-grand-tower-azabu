@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* ROP-WEB: box-sizing リセット（全要素に適用） */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Tailwind v4 Theme Configuration */
 @theme {
   /* Colors */
@@ -16,20 +21,20 @@
   --font-sans: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
   --font-display: "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", Georgia, serif;
 
-  /* Font Sizes */
+  /* Font Sizes - ROP-WEB: 流体タイポグラフィ */
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 2rem;
-  --font-size-4xl: 2.5rem;
-  --font-size-5xl: 3rem;
-  --font-size-6xl: 4rem;
+  --font-size-2xl: clamp(1.25rem, 2vw + 0.5rem, 1.5rem);
+  --font-size-3xl: clamp(1.5rem, 3vw + 0.5rem, 2rem);
+  --font-size-4xl: clamp(1.75rem, 4vw + 0.5rem, 2.5rem);
+  --font-size-5xl: clamp(2rem, 5vw + 0.5rem, 3rem);
+  --font-size-6xl: clamp(2.5rem, 6vw + 0.5rem, 4rem);
 
-  /* Spacing */
-  --spacing-section: 150px;
+  /* ROP-WEB: 流体スペーシング（80px @ 320px → 150px @ 1280px） */
+  --spacing-section: clamp(80px, 5vw + 60px, 150px);
 
   /* Transitions */
   --transition-base: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -89,8 +94,10 @@ body.custom-cursor-active [role="button"] {
   border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-gold);
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent-gold);
+  }
 }
 
 /* Typography */
@@ -116,13 +123,15 @@ h1, h2, h3, h4, h5, h6 {
 .container-narrow {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 24px;
+  /* ROP-WEB: 流体パディング（16px @ 320px → 24px @ 768px+） */
+  padding: 0 clamp(16px, 4vw, 24px);
 }
 
 .container-wide {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 48px;
+  /* ROP-WEB: 流体パディング（16px @ 320px → 48px @ 1024px+） */
+  padding: 0 clamp(16px, 5vw, 48px);
 }
 
 /* Gold Gradient Text */
@@ -138,7 +147,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 40px;
+  /* ROP-WEB: タップターゲット44px以上確保 */
+  min-height: 44px;
+  padding: 12px 32px;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -147,13 +158,15 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+@media (min-width: 768px) {
+  .btn {
+    padding: 16px 40px;
+  }
+}
+
 .btn-primary {
   background-color: var(--color-accent-gold);
   color: var(--color-background);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-accent-light);
 }
 
 .btn-outline {
@@ -162,15 +175,23 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-accent-gold);
 }
 
-.btn-outline:hover {
-  background-color: var(--color-accent-gold);
-  color: var(--color-background);
+/* ROP-WEB: ホバー対応デバイスのみホバー効果適用 */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background-color: var(--color-accent-light);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-accent-gold);
+    color: var(--color-background);
+  }
 }
 
 /* Section Title */
 .section-title {
   text-align: center;
-  margin-bottom: 80px;
+  /* ROP-WEB: 流体マージン（40px @ 320px → 80px @ 1024px+） */
+  margin-bottom: clamp(40px, 6vw, 80px);
 }
 
 .section-title-en {
@@ -342,8 +363,10 @@ body.loading-complete .loading {
   transition: width 0.3s ease;
 }
 
-.link-underline:hover::after {
-  width: 100%;
+@media (hover: hover) and (pointer: fine) {
+  .link-underline:hover::after {
+    width: 100%;
+  }
 }
 
 /* Underline from center */
@@ -363,9 +386,11 @@ body.loading-complete .loading {
   transition: width 0.3s ease, left 0.3s ease;
 }
 
-.link-underline-center:hover::after {
-  width: 100%;
-  left: 0;
+@media (hover: hover) and (pointer: fine) {
+  .link-underline-center:hover::after {
+    width: 100%;
+    left: 0;
+  }
 }
 
 /* Text slide up on hover */
@@ -380,10 +405,6 @@ body.loading-complete .loading {
   transition: transform 0.3s ease;
 }
 
-.link-slide:hover span {
-  transform: translateY(-100%);
-}
-
 .link-slide::after {
   content: attr(data-text);
   position: absolute;
@@ -393,8 +414,14 @@ body.loading-complete .loading {
   transition: transform 0.3s ease;
 }
 
-.link-slide:hover::after {
-  transform: translateY(-100%);
+@media (hover: hover) and (pointer: fine) {
+  .link-slide:hover span {
+    transform: translateY(-100%);
+  }
+
+  .link-slide:hover::after {
+    transform: translateY(-100%);
+  }
 }
 
 /* Letter spacing expand on hover */
@@ -403,9 +430,11 @@ body.loading-complete .loading {
   transition: letter-spacing 0.3s ease, color 0.3s ease;
 }
 
-.link-expand:hover {
-  letter-spacing: 0.2em;
-  color: var(--color-accent-gold);
+@media (hover: hover) and (pointer: fine) {
+  .link-expand:hover {
+    letter-spacing: 0.2em;
+    color: var(--color-accent-gold);
+  }
 }
 
 /* Gradient text on hover */
@@ -417,10 +446,12 @@ body.loading-complete .loading {
   -webkit-text-fill-color: transparent;
 }
 
-.link-gradient:hover {
-  background: linear-gradient(90deg, var(--color-accent-gold), var(--color-accent-light));
-  -webkit-background-clip: text;
-  background-clip: text;
+@media (hover: hover) and (pointer: fine) {
+  .link-gradient:hover {
+    background: linear-gradient(90deg, var(--color-accent-gold), var(--color-accent-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 }
 
 /* =====================================================
