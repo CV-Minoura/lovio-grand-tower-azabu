@@ -1,0 +1,63 @@
+---
+// Loading Screen Component
+// シンプル＆エレガント
+---
+
+<div id="loading" class="loading fixed inset-0 z-[9999] flex items-center justify-center bg-background">
+  <!-- Minimal Logo -->
+  <div class="loading-content text-center">
+    <p class="font-serif text-sm tracking-[0.4em] text-accent-gold">LIVIO</p>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const initLoading = () => {
+    const loading = document.getElementById('loading');
+    const content = document.querySelector('.loading-content');
+
+    if (!loading) return;
+
+    document.body.style.overflow = 'hidden';
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        document.body.classList.add('loading-complete');
+        document.body.style.overflow = '';
+      }
+    });
+
+    tl
+    .from(content, {
+      opacity: 0,
+      duration: 0.4,
+      ease: 'power2.out'
+    })
+    .to(content, {
+      opacity: 0,
+      duration: 0.3,
+      delay: 0.6
+    })
+    .to(loading, {
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.inOut'
+    }, '-=0.1')
+    .set(loading, { display: 'none' });
+  };
+
+  document.addEventListener('DOMContentLoaded', initLoading);
+</script>
+
+<style>
+  .loading {
+    will-change: opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .loading {
+      transition: none !important;
+    }
+  }
+</style>

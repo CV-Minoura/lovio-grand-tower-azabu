@@ -1,0 +1,133 @@
+---
+// Page Transition Component
+// 内部リンク遷移時のフェード＋スライド演出
+---
+
+<div id="page-transition" class="page-transition fixed inset-0 z-[10001] pointer-events-none">
+  <!-- Overlay panels -->
+  <div class="transition-panel transition-panel-1 absolute inset-0 bg-background transform translate-y-full"></div>
+  <div class="transition-panel transition-panel-2 absolute inset-0 bg-surface transform translate-y-full"></div>
+
+  <!-- Logo during transition -->
+  <div class="transition-logo absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none">
+    <span class="font-serif text-lg tracking-[0.3em] text-accent-gold">LIVIO GRAND TOWER</span>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const initPageTransition = () => {
+    const transition = document.getElementById('page-transition');
+    const panel1 = document.querySelector('.transition-panel-1');
+    const panel2 = document.querySelector('.transition-panel-2');
+    const logo = document.querySelector('.transition-logo');
+
+    if (!transition || !panel1 || !panel2 || !logo) return;
+
+    // Page enter animation (on load)
+    const enterAnimation = () => {
+      const tl = gsap.timeline();
+
+      tl.set([panel1, panel2], { y: 0 })
+        .set(logo, { opacity: 1 })
+        .to(logo, {
+          opacity: 0,
+          duration: 0.3,
+          delay: 0.5
+        })
+        .to(panel2, {
+          y: '-100%',
+          duration: 0.6,
+          ease: 'power3.inOut'
+        }, '-=0.1')
+        .to(panel1, {
+          y: '-100%',
+          duration: 0.6,
+          ease: 'power3.inOut'
+        }, '-=0.4');
+    };
+
+    // Page leave animation (before navigate)
+    const leaveAnimation = (callback: () => void) => {
+      const tl = gsap.timeline({
+        onComplete: callback
+      });
+
+      tl.set([panel1, panel2], { y: '100%' })
+        .to(panel1, {
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.inOut'
+        })
+        .to(panel2, {
+          y: 0,
+          duration: 0.5,
+          ease: 'power3.inOut'
+        }, '-=0.3')
+        .to(logo, {
+          opacity: 1,
+          duration: 0.3
+        }, '-=0.2');
+    };
+
+    // Handle internal link clicks
+    document.querySelectorAll('a[href^="/"]').forEach(link => {
+      // Skip anchors and external links
+      if (link.getAttribute('href')?.includes('#')) return;
+      if (link.getAttribute('target') === '_blank') return;
+
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+
+        if (href) {
+          leaveAnimation(() => {
+            window.location.href = href;
+          });
+        }
+      });
+    });
+
+    // Run enter animation after loading is complete
+    const checkLoading = () => {
+      if (document.body.classList.contains('loading-complete')) {
+        // If loading animation already done, run transition
+        gsap.set([panel1, panel2], { y: '-100%' });
+      } else {
+        // Wait for loading to complete, then set panels ready
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class' && document.body.classList.contains('loading-complete')) {
+              gsap.set([panel1, panel2], { y: '-100%' });
+              observer.disconnect();
+            }
+          });
+        });
+
+        observer.observe(document.body, { attributes: true });
+      }
+    };
+
+    checkLoading();
+  };
+
+  document.addEventListener('DOMContentLoaded', initPageTransition);
+</script>
+
+<style>
+  .transition-panel {
+    will-change: transform;
+  }
+
+  .transition-logo {
+    will-change: opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .transition-panel,
+    .transition-logo {
+      transition: none !important;
+    }
+  }
+</style>

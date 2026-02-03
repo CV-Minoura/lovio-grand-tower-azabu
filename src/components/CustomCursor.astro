@@ -1,0 +1,118 @@
+---
+// Custom Cursor Component
+// 通常=小ドット / ホバー=リング拡大
+---
+
+<div id="custom-cursor" class="custom-cursor fixed pointer-events-none z-[9998] hidden md:block">
+  <!-- Inner Dot -->
+  <div class="cursor-dot w-2 h-2 bg-accent-gold rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+  <!-- Outer Ring -->
+  <div class="cursor-ring w-10 h-10 border border-accent-gold/50 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-50"></div>
+
+  <!-- Cursor Text (for VIEW, MORE etc.) -->
+  <div class="cursor-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-xs tracking-widest text-accent-gold opacity-0"></div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const initCustomCursor = () => {
+    // Only on desktop
+    if (window.innerWidth < 768) return;
+
+    const cursor = document.getElementById('custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+    const cursorText = document.querySelector('.cursor-text');
+
+    if (!cursor || !cursorDot || !cursorRing || !cursorText) return;
+
+    document.body.classList.add('custom-cursor-active');
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let cursorX = 0;
+    let cursorY = 0;
+
+    // Track mouse position
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Smooth cursor animation
+    const animateCursor = () => {
+      const dx = mouseX - cursorX;
+      const dy = mouseY - cursorY;
+
+      cursorX += dx * 0.15;
+      cursorY += dy * 0.15;
+
+      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+
+      requestAnimationFrame(animateCursor);
+    };
+
+    animateCursor();
+
+    // Interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, [role="button"], .cursor-hover');
+    const galleryElements = document.querySelectorAll('[data-cursor-text]');
+
+    // Hover states
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        gsap.to(cursorDot, { scale: 0.5, duration: 0.3 });
+        gsap.to(cursorRing, { opacity: 1, scale: 1, duration: 0.3 });
+      });
+
+      el.addEventListener('mouseleave', () => {
+        gsap.to(cursorDot, { scale: 1, duration: 0.3 });
+        gsap.to(cursorRing, { opacity: 0, scale: 0.5, duration: 0.3 });
+      });
+    });
+
+    // Gallery hover with text
+    galleryElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        const text = el.getAttribute('data-cursor-text') || 'VIEW';
+        (cursorText as HTMLElement).textContent = text;
+
+        gsap.to(cursorDot, { scale: 0, duration: 0.3 });
+        gsap.to(cursorRing, { opacity: 1, scale: 2, duration: 0.3 });
+        gsap.to(cursorText, { opacity: 1, duration: 0.3 });
+      });
+
+      el.addEventListener('mouseleave', () => {
+        gsap.to(cursorDot, { scale: 1, duration: 0.3 });
+        gsap.to(cursorRing, { opacity: 0, scale: 0.5, duration: 0.3 });
+        gsap.to(cursorText, { opacity: 0, duration: 0.3 });
+      });
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+      gsap.to(cursor, { opacity: 0, duration: 0.3 });
+    });
+
+    document.addEventListener('mouseenter', () => {
+      gsap.to(cursor, { opacity: 1, duration: 0.3 });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initCustomCursor);
+</script>
+
+<style>
+  .custom-cursor {
+    mix-blend-mode: difference;
+    will-change: transform;
+  }
+
+  .cursor-dot,
+  .cursor-ring,
+  .cursor-text {
+    will-change: transform, opacity;
+  }
+</style>

@@ -1,0 +1,22 @@
+{
+  "name": "livio-grand-tower-azabu",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.5.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "gsap": "^3.14.2",
+    "lenis": "^1.3.17",
+    "mapbox-gl": "^3.18.1",
+    "split-type": "^0.3.4",
+    "swiper": "^12.1.0",
+    "tailwindcss": "^4.1.18"
+  }
+}

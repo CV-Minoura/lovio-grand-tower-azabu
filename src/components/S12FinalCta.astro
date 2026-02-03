@@ -1,0 +1,391 @@
+---
+// S12. Final CTA Component
+// Premium 最終コンバージョン with Glowing Effects, Cinematic Entrance
+---
+
+<section id="contact" data-section="P1-S12" class="relative py-32 md:py-48 overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img
+      src="/images/12-1. 外観（薄暗く処理前提）.png"
+      alt=""
+      class="cta-bg-image w-full h-full object-cover opacity-40"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/60"></div>
+    <!-- Animated particles -->
+    <div class="cta-particles absolute inset-0 pointer-events-none">
+      <div class="cta-particle absolute w-1 h-1 bg-accent-gold/30 rounded-full"></div>
+      <div class="cta-particle absolute w-1 h-1 bg-accent-gold/30 rounded-full"></div>
+      <div class="cta-particle absolute w-1 h-1 bg-accent-gold/30 rounded-full"></div>
+      <div class="cta-particle absolute w-1 h-1 bg-accent-gold/30 rounded-full"></div>
+      <div class="cta-particle absolute w-1 h-1 bg-accent-gold/30 rounded-full"></div>
+    </div>
+  </div>
+
+  <div class="relative z-10 container-wide">
+    <!-- Section Title -->
+    <div class="section-title">
+      <p class="section-title-en cta-title-en">
+        <span class="cta-char">C</span><span class="cta-char">O</span><span class="cta-char">N</span><span class="cta-char">T</span><span class="cta-char">A</span><span class="cta-char">C</span><span class="cta-char">T</span>
+      </p>
+      <h2 class="section-title-jp cta-title-jp">お問い合わせ</h2>
+    </div>
+
+    <p class="cta-subtitle text-center text-text-secondary mb-16 max-w-xl mx-auto opacity-0">
+      資料請求・来場予約を承っております。<br />
+      お気軽にお問い合わせください。
+    </p>
+
+    <!-- CTA Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <!-- Document Request -->
+      <div class="cta-card p-8 md:p-12 bg-surface border border-border hover:border-accent-gold transition-all duration-500 group relative overflow-hidden">
+        <div class="cta-card-shine absolute inset-0 pointer-events-none"></div>
+        <div class="cta-card-glow absolute -inset-1 bg-accent-gold/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10 text-center">
+          <div class="cta-icon w-16 h-16 mx-auto mb-6 border border-accent-gold rounded-full flex items-center justify-center group-hover:bg-accent-gold transition-colors duration-300 relative">
+            <svg class="w-8 h-8 text-accent-gold group-hover:text-background transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+            <div class="icon-ring absolute inset-0 rounded-full border border-accent-gold scale-100 opacity-0"></div>
+          </div>
+          <h3 class="font-serif text-xl tracking-wider mb-2">DOCUMENT</h3>
+          <p class="text-display text-lg text-text-secondary mb-8">資料請求</p>
+          <p class="text-sm text-text-secondary mb-8 leading-relaxed">
+            物件の詳細資料をお届けします。<br />
+            間取り・設備仕様・価格表など。
+          </p>
+          <a href="#" class="cta-btn btn btn-outline w-full relative overflow-hidden">
+            <span class="cta-btn-text relative z-10">資料を請求する</span>
+            <span class="cta-btn-bg absolute inset-0 bg-accent-gold transform -translate-x-full"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Visit Reservation -->
+      <div class="cta-card cta-card-primary p-8 md:p-12 bg-surface border border-accent-gold group relative overflow-hidden">
+        <div class="cta-card-shine absolute inset-0 pointer-events-none"></div>
+        <div class="cta-card-glow absolute -inset-1 bg-accent-gold/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <!-- Accent corner -->
+        <div class="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+          <div class="absolute top-0 right-0 w-24 h-6 bg-accent-gold transform rotate-45 translate-x-6 -translate-y-2"></div>
+        </div>
+        <div class="relative z-10 text-center">
+          <div class="cta-icon w-16 h-16 mx-auto mb-6 bg-accent-gold rounded-full flex items-center justify-center relative">
+            <svg class="w-8 h-8 text-background" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <div class="icon-pulse absolute inset-0 rounded-full bg-accent-gold animate-ping opacity-20"></div>
+          </div>
+          <h3 class="font-serif text-xl tracking-wider mb-2">RESERVATION</h3>
+          <p class="text-display text-lg text-text-secondary mb-8">来場予約</p>
+          <p class="text-sm text-text-secondary mb-8 leading-relaxed">
+            モデルルームをご見学いただけます。<br />
+            完全予約制・個別対応。
+          </p>
+          <a href="#" class="cta-btn cta-btn-primary btn btn-primary w-full relative overflow-hidden group">
+            <span class="cta-btn-text relative z-10">来場予約する</span>
+            <span class="cta-btn-shine absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone Contact -->
+    <div class="cta-phone mt-16 text-center opacity-0">
+      <p class="text-text-secondary text-sm mb-4">お電話でのお問い合わせ</p>
+      <a href="tel:0120-XXX-XXX" class="phone-number font-serif text-2xl md:text-3xl tracking-wider text-accent-gold hover:text-accent-light transition-colors relative inline-block group">
+        <span class="phone-digits">0120-XXX-XXX</span>
+        <span class="absolute -bottom-2 left-0 w-0 h-[1px] bg-accent-gold group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <p class="text-xs text-text-secondary mt-2">
+        営業時間：10:00〜18:00（水曜定休）
+      </p>
+    </div>
+
+    <!-- Micro Copy -->
+    <p class="cta-micro text-center text-xs text-text-secondary mt-12 opacity-0">
+      ご入力いただいた個人情報は、資料送付・来場予約のご連絡以外の目的では使用いたしません。
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initFinalCta = () => {
+    const cards = document.querySelectorAll('.cta-card');
+    const titleChars = document.querySelectorAll('.cta-char');
+    const titleJp = document.querySelector('.cta-title-jp');
+    const subtitle = document.querySelector('.cta-subtitle');
+    const phone = document.querySelector('.cta-phone');
+    const micro = document.querySelector('.cta-micro');
+    const bgImage = document.querySelector('.cta-bg-image');
+    const particles = document.querySelectorAll('.cta-particle');
+
+    // Initial states
+    gsap.set(titleChars, { opacity: 0, y: 20, rotateX: -90 });
+    gsap.set(titleJp, { opacity: 0, y: 20 });
+    gsap.set(cards, { opacity: 0, y: 50 });
+
+    // Floating particles
+    particles.forEach((particle, i) => {
+      gsap.set(particle, {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * 400 + 200,
+        scale: Math.random() * 0.5 + 0.5
+      });
+
+      gsap.to(particle, {
+        y: '-=300',
+        x: `+=${Math.random() * 100 - 50}`,
+        opacity: 0,
+        duration: 4 + Math.random() * 3,
+        repeat: -1,
+        delay: i * 0.8,
+        ease: 'none',
+        onRepeat: function() {
+          gsap.set(particle, {
+            y: 400,
+            x: Math.random() * window.innerWidth,
+            opacity: 0.3
+          });
+        }
+      });
+    });
+
+    // Background image Ken Burns
+    gsap.to(bgImage, {
+      scale: 1.1,
+      duration: 20,
+      repeat: -1,
+      yoyo: true,
+      ease: 'none'
+    });
+
+    ScrollTrigger.create({
+      trigger: '#contact',
+      start: 'top 60%',
+      onEnter: () => {
+        // Title characters with 3D rotation
+        gsap.to(titleChars, {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          duration: 0.5,
+          stagger: 0.05,
+          ease: 'power2.out'
+        });
+
+        // Japanese title
+        gsap.to(titleJp, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: 0.3,
+          ease: 'power2.out'
+        });
+
+        // Subtitle
+        gsap.to(subtitle, {
+          opacity: 1,
+          duration: 0.6,
+          delay: 0.5,
+          ease: 'power2.out'
+        });
+
+        // Cards with stagger
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          delay: 0.6,
+          ease: 'power2.out'
+        });
+
+        // Phone section
+        gsap.to(phone, {
+          opacity: 1,
+          duration: 0.6,
+          delay: 1,
+          ease: 'power2.out'
+        });
+
+        // Micro copy
+        gsap.to(micro, {
+          opacity: 1,
+          duration: 0.6,
+          delay: 1.2,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    // Card hover effects
+    cards.forEach(card => {
+      const shine = card.querySelector('.cta-card-shine');
+      const icon = card.querySelector('.cta-icon');
+      const iconRing = card.querySelector('.icon-ring');
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const x = ((e as MouseEvent).clientX - rect.left) / rect.width * 100;
+        const y = ((e as MouseEvent).clientY - rect.top) / rect.height * 100;
+
+        gsap.set(shine, {
+          background: `radial-gradient(circle at ${x}% ${y}%, rgba(201,169,110,0.1) 0%, transparent 50%)`
+        });
+      });
+
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -8,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+
+        if (iconRing) {
+          gsap.fromTo(iconRing,
+            { scale: 1, opacity: 0.5 },
+            { scale: 1.5, opacity: 0, duration: 0.6, repeat: -1 }
+          );
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+        gsap.set(shine, { background: 'none' });
+
+        if (iconRing) {
+          gsap.killTweensOf(iconRing);
+          gsap.set(iconRing, { scale: 1, opacity: 0 });
+        }
+      });
+    });
+
+    // Button ripple effect
+    document.querySelectorAll('.cta-btn').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const rect = (this as HTMLElement).getBoundingClientRect();
+        const x = (e as MouseEvent).clientX - rect.left;
+        const y = (e as MouseEvent).clientY - rect.top;
+
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+          position: absolute;
+          width: 0;
+          height: 0;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          left: ${x}px;
+          top: ${y}px;
+          pointer-events: none;
+          z-index: 20;
+        `;
+
+        (this as HTMLElement).appendChild(ripple);
+
+        gsap.to(ripple, {
+          width: 300,
+          height: 300,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          onComplete: () => ripple.remove()
+        });
+      });
+
+      // Outline button hover fill
+      if (btn.classList.contains('btn-outline')) {
+        const bg = btn.querySelector('.cta-btn-bg');
+        btn.addEventListener('mouseenter', () => {
+          gsap.to(bg, { x: 0, duration: 0.3, ease: 'power2.out' });
+          gsap.to(btn.querySelector('.cta-btn-text'), { color: '#0A0A0A', duration: 0.3 });
+        });
+        btn.addEventListener('mouseleave', () => {
+          gsap.to(bg, { x: '-100%', duration: 0.3, ease: 'power2.out' });
+          gsap.to(btn.querySelector('.cta-btn-text'), { color: '', duration: 0.3 });
+        });
+      }
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initFinalCta);
+</script>
+
+<style>
+  .cta-card {
+    will-change: transform, opacity;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cta-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .cta-card-shine {
+    will-change: background;
+  }
+
+  .cta-card-glow {
+    will-change: opacity;
+  }
+
+  .cta-char {
+    display: inline-block;
+    will-change: transform, opacity;
+    transform-style: preserve-3d;
+  }
+
+  .cta-bg-image {
+    will-change: transform;
+  }
+
+  .cta-particle {
+    will-change: transform, opacity;
+  }
+
+  .cta-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn-bg {
+    will-change: transform;
+  }
+
+  .icon-ring {
+    will-change: transform, opacity;
+  }
+
+  .phone-number:hover .phone-digits {
+    letter-spacing: 0.15em;
+    transition: letter-spacing 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-card,
+    .cta-bg-image,
+    .cta-particle,
+    .cta-btn-bg,
+    .icon-ring {
+      transition: none !important;
+      animation: none !important;
+    }
+
+    .animate-ping,
+    .icon-pulse {
+      animation: none !important;
+    }
+  }
+</style>

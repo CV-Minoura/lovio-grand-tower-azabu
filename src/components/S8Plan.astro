@@ -1,0 +1,506 @@
+---
+// S8. Plan Selection Component
+// Premium タブ切り替え with 3D Flip, Line Drawing, Cinematic Effects
+---
+
+<section id="plan" data-section="P1-S8" class="section-padding bg-background relative overflow-hidden">
+  <!-- Background Texture -->
+  <div class="absolute inset-0 opacity-5">
+    <img src="/images/8-1. 間取り図背景テクスチャ.png" alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <!-- Floating particles -->
+  <div class="plan-particles absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="particle absolute w-1 h-1 bg-accent-gold/20 rounded-full"></div>
+    <div class="particle absolute w-1 h-1 bg-accent-gold/20 rounded-full"></div>
+    <div class="particle absolute w-1 h-1 bg-accent-gold/20 rounded-full"></div>
+  </div>
+
+  <div class="container-wide relative z-10">
+    <!-- Section Title -->
+    <div class="section-title">
+      <p class="section-title-en">PLAN</p>
+      <h2 class="section-title-jp">間取り</h2>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="plan-tabs flex justify-center gap-2 md:gap-4 mb-12 relative">
+      <!-- Sliding background indicator -->
+      <div class="tab-indicator absolute h-full bg-accent-gold/10 border border-accent-gold transition-all duration-500 rounded-sm"></div>
+
+      <button class="plan-tab active relative z-10 px-6 py-3" data-plan="2ldk">
+        <span class="tab-text font-serif text-lg tracking-wider transition-colors duration-300">2LDK</span>
+        <span class="tab-line absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent-gold transition-all duration-300"></span>
+      </button>
+      <button class="plan-tab relative z-10 px-6 py-3" data-plan="3ldk">
+        <span class="tab-text font-serif text-lg tracking-wider transition-colors duration-300">3LDK</span>
+        <span class="tab-line absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent-gold transition-all duration-300"></span>
+      </button>
+      <button class="plan-tab relative z-10 px-6 py-3" data-plan="premium">
+        <span class="tab-text font-serif text-lg tracking-wider transition-colors duration-300">PREMIUM</span>
+        <span class="tab-line absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-accent-gold transition-all duration-300"></span>
+      </button>
+    </div>
+
+    <!-- Plan Contents with 3D flip container -->
+    <div class="plan-contents relative perspective-1000">
+      <!-- 2LDK -->
+      <div class="plan-content active" data-content="2ldk">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="plan-image-wrapper relative">
+            <div class="plan-image bg-white p-8 md:p-12 relative overflow-hidden">
+              <!-- SVG line drawing effect overlay -->
+              <div class="plan-svg-overlay absolute inset-0 pointer-events-none z-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <rect class="plan-line" x="5" y="5" width="90" height="90" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="0.5" />
+                </svg>
+              </div>
+              <img
+                src="/images/plan-2ldk.svg"
+                alt="2LDK間取り図"
+                class="plan-img w-full h-auto relative z-0"
+                decoding="async"
+              />
+              <!-- Hover highlight areas -->
+              <div class="plan-room-highlights absolute inset-8 md:inset-12 pointer-events-none">
+                <div class="room-highlight absolute top-[20%] left-[30%] w-[40%] h-[35%] border border-transparent hover:border-accent-gold/50 hover:bg-accent-gold/5 transition-all duration-300 pointer-events-auto cursor-pointer group">
+                  <span class="room-tooltip absolute -top-8 left-1/2 -translate-x-1/2 text-xs text-accent-gold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">LIVING DINING</span>
+                </div>
+              </div>
+            </div>
+            <!-- Corner accents -->
+            <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-accent-gold opacity-0 plan-corner"></div>
+          </div>
+          <div class="plan-info">
+            <div class="plan-type-badge inline-block px-4 py-1 border border-accent-gold/30 mb-4">
+              <span class="text-xs tracking-widest text-accent-gold">TYPE A</span>
+            </div>
+            <h3 class="plan-title font-serif text-2xl tracking-wider mb-2">A TYPE</h3>
+            <p class="plan-subtitle text-text-secondary mb-8">2LDK</p>
+
+            <dl class="plan-specs space-y-4 border-t border-border pt-8">
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">専有面積</dt>
+                <dd class="font-serif text-lg"><span class="spec-num" data-num="58.24">0</span><span class="text-sm">m²</span></dd>
+              </div>
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">バルコニー</dt>
+                <dd class="font-serif text-lg"><span class="spec-num" data-num="10.52">0</span><span class="text-sm">m²</span></dd>
+              </div>
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">価格帯</dt>
+                <dd class="font-serif text-lg text-accent-gold"><span class="spec-num" data-num="7800">0</span><span class="text-sm">万円台〜</span></dd>
+              </div>
+            </dl>
+
+            <p class="plan-desc mt-8 text-text-secondary text-sm leading-relaxed opacity-0">
+              コンパクトながらも機能的な2LDK。
+              DINKSや単身の方に最適な、
+              都心ライフを満喫できるプランです。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3LDK -->
+      <div class="plan-content hidden" data-content="3ldk">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="plan-image-wrapper relative">
+            <div class="plan-image bg-white p-8 md:p-12 relative overflow-hidden">
+              <div class="plan-svg-overlay absolute inset-0 pointer-events-none z-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <rect class="plan-line" x="5" y="5" width="90" height="90" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="0.5" />
+                </svg>
+              </div>
+              <img
+                src="/images/plan-3ldk.svg"
+                alt="3LDK間取り図"
+                class="plan-img w-full h-auto relative z-0"
+                decoding="async"
+              />
+            </div>
+            <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-accent-gold opacity-0 plan-corner"></div>
+          </div>
+          <div class="plan-info">
+            <div class="plan-type-badge inline-block px-4 py-1 border border-accent-gold/30 mb-4">
+              <span class="text-xs tracking-widest text-accent-gold">TYPE B</span>
+            </div>
+            <h3 class="plan-title font-serif text-2xl tracking-wider mb-2">B TYPE</h3>
+            <p class="plan-subtitle text-text-secondary mb-8">3LDK</p>
+
+            <dl class="plan-specs space-y-4 border-t border-border pt-8">
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">専有面積</dt>
+                <dd class="font-serif text-lg"><span class="spec-num" data-num="85.42">0</span><span class="text-sm">m²</span></dd>
+              </div>
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">バルコニー</dt>
+                <dd class="font-serif text-lg"><span class="spec-num" data-num="14.28">0</span><span class="text-sm">m²</span></dd>
+              </div>
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">価格帯</dt>
+                <dd class="font-serif text-lg text-accent-gold"><span class="spec-num" data-num="12800">0</span><span class="text-sm">万円台〜</span></dd>
+              </div>
+            </dl>
+
+            <p class="plan-desc mt-8 text-text-secondary text-sm leading-relaxed opacity-0">
+              ファミリーに最適なゆとりの3LDK。
+              リビングからの眺望を楽しみながら、
+              家族の時間を大切にできるプランです。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium -->
+      <div class="plan-content hidden" data-content="premium">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="plan-image-wrapper relative">
+            <div class="plan-image bg-white p-8 md:p-12 relative overflow-hidden">
+              <div class="plan-svg-overlay absolute inset-0 pointer-events-none z-10">
+                <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <rect class="plan-line" x="5" y="5" width="90" height="90" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="0.5" />
+                </svg>
+              </div>
+              <img
+                src="/images/plan-premium.svg"
+                alt="プレミアム間取り図"
+                class="plan-img w-full h-auto relative z-0"
+                decoding="async"
+              />
+              <!-- Premium badge -->
+              <div class="absolute top-4 right-4 px-3 py-1 bg-accent-gold text-background text-xs tracking-wider">
+                PENTHOUSE
+              </div>
+            </div>
+            <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-accent-gold opacity-0 plan-corner"></div>
+            <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-accent-gold opacity-0 plan-corner"></div>
+          </div>
+          <div class="plan-info">
+            <div class="plan-type-badge inline-block px-4 py-1 bg-accent-gold/10 border border-accent-gold mb-4">
+              <span class="text-xs tracking-widest text-accent-gold">PREMIUM</span>
+            </div>
+            <h3 class="plan-title font-serif text-2xl tracking-wider mb-2">PREMIUM TYPE</h3>
+            <p class="plan-subtitle text-text-secondary mb-8">3LDK + S</p>
+
+            <dl class="plan-specs space-y-4 border-t border-border pt-8">
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">専有面積</dt>
+                <dd class="font-serif text-lg"><span class="spec-num" data-num="128.56">0</span><span class="text-sm">m²</span></dd>
+              </div>
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">バルコニー</dt>
+                <dd class="font-serif text-lg"><span class="spec-num" data-num="28.64">0</span><span class="text-sm">m²</span></dd>
+              </div>
+              <div class="spec-item flex justify-between opacity-0">
+                <dt class="text-text-secondary">価格帯</dt>
+                <dd class="font-serif text-lg text-accent-gold"><span class="spec-num" data-num="24800">0</span><span class="text-sm">万円台〜</span></dd>
+              </div>
+            </dl>
+
+            <p class="plan-desc mt-8 text-text-secondary text-sm leading-relaxed opacity-0">
+              最上階に位置するプレミアム住戸。
+              専用エレベーター・テラス付きで、
+              最上級の邸宅空間をお届けします。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initPlan = () => {
+    const tabs = document.querySelectorAll('.plan-tab');
+    const contents = document.querySelectorAll('.plan-content');
+    const indicator = document.querySelector('.tab-indicator') as HTMLElement;
+    const particles = document.querySelectorAll('.particle');
+
+    // Floating particles animation
+    particles.forEach((particle, i) => {
+      gsap.set(particle, {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * 500
+      });
+
+      gsap.to(particle, {
+        y: '-=200',
+        x: `+=${Math.random() * 100 - 50}`,
+        opacity: 0,
+        duration: 3 + Math.random() * 2,
+        repeat: -1,
+        delay: i * 0.5,
+        ease: 'none',
+        onRepeat: function() {
+          gsap.set(particle, {
+            y: 500,
+            x: Math.random() * window.innerWidth,
+            opacity: 0.3
+          });
+        }
+      });
+    });
+
+    // Position indicator on active tab
+    const updateIndicator = (tab: Element) => {
+      const rect = tab.getBoundingClientRect();
+      const parentRect = tab.parentElement!.getBoundingClientRect();
+
+      gsap.to(indicator, {
+        left: rect.left - parentRect.left,
+        width: rect.width,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
+    };
+
+    // Initialize indicator position
+    const activeTab = document.querySelector('.plan-tab.active');
+    if (activeTab && indicator) {
+      const rect = activeTab.getBoundingClientRect();
+      const parentRect = activeTab.parentElement!.getBoundingClientRect();
+      indicator.style.left = `${rect.left - parentRect.left}px`;
+      indicator.style.width = `${rect.width}px`;
+    }
+
+    // Animate specs with count-up
+    const animateSpecs = (content: Element) => {
+      const specs = content.querySelectorAll('.spec-item');
+      const desc = content.querySelector('.plan-desc');
+      const corners = content.querySelectorAll('.plan-corner');
+      const planLine = content.querySelector('.plan-line');
+      const planImg = content.querySelector('.plan-img');
+
+      // Reset
+      gsap.set(specs, { opacity: 0, x: 20 });
+      gsap.set(desc, { opacity: 0, y: 20 });
+      gsap.set(corners, { opacity: 0 });
+      gsap.set(planImg, { opacity: 0, scale: 0.95 });
+
+      // SVG line drawing
+      if (planLine) {
+        const length = (planLine as SVGRectElement).getTotalLength?.() || 360;
+        gsap.set(planLine, { strokeDasharray: length, strokeDashoffset: length });
+        gsap.to(planLine, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: 'power2.out'
+        });
+      }
+
+      // Plan image fade in
+      gsap.to(planImg, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+
+      // Corner accents
+      gsap.to(corners, {
+        opacity: 1,
+        duration: 0.4,
+        stagger: 0.1,
+        delay: 0.3,
+        ease: 'power2.out'
+      });
+
+      // Specs stagger with count-up
+      specs.forEach((spec, i) => {
+        const numEl = spec.querySelector('.spec-num');
+        const targetNum = parseFloat(numEl?.getAttribute('data-num') || '0');
+
+        gsap.to(spec, {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          delay: 0.4 + (i * 0.15),
+          ease: 'power2.out'
+        });
+
+        if (numEl) {
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: targetNum,
+            duration: 1.2,
+            delay: 0.5 + (i * 0.15),
+            ease: 'power2.out',
+            onUpdate: () => {
+              // Format number based on size
+              if (targetNum >= 1000) {
+                numEl.textContent = Math.round(obj.val).toLocaleString();
+              } else {
+                numEl.textContent = obj.val.toFixed(2);
+              }
+            }
+          });
+        }
+      });
+
+      // Description
+      gsap.to(desc, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: 0.8,
+        ease: 'power2.out'
+      });
+    };
+
+    const switchPlan = (planId: string) => {
+      // Update tabs
+      tabs.forEach(tab => {
+        const line = tab.querySelector('.tab-line');
+        if (tab.getAttribute('data-plan') === planId) {
+          tab.classList.add('active');
+          updateIndicator(tab);
+          gsap.to(line, { width: '100%', duration: 0.3 });
+        } else {
+          tab.classList.remove('active');
+          gsap.to(line, { width: 0, duration: 0.3 });
+        }
+      });
+
+      // Switch content with 3D flip effect
+      contents.forEach(content => {
+        if (content.getAttribute('data-content') === planId) {
+          content.classList.remove('hidden');
+          content.classList.add('active');
+
+          // 3D flip animation
+          gsap.fromTo(content,
+            { opacity: 0, rotateY: -15, scale: 0.95 },
+            {
+              opacity: 1,
+              rotateY: 0,
+              scale: 1,
+              duration: 0.6,
+              ease: 'power2.out',
+              onComplete: () => animateSpecs(content)
+            }
+          );
+        } else {
+          if (!content.classList.contains('hidden')) {
+            gsap.to(content, {
+              opacity: 0,
+              rotateY: 15,
+              scale: 0.95,
+              duration: 0.3,
+              ease: 'power2.in',
+              onComplete: () => {
+                content.classList.add('hidden');
+                content.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    };
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const planId = tab.getAttribute('data-plan');
+        if (planId) switchPlan(planId);
+      });
+    });
+
+    // Initial animation on scroll
+    ScrollTrigger.create({
+      trigger: '#plan',
+      start: 'top 60%',
+      onEnter: () => {
+        const activeContent = document.querySelector('.plan-content.active');
+        if (activeContent) {
+          animateSpecs(activeContent);
+        }
+      }
+    });
+
+    // Plan image hover effect
+    document.querySelectorAll('.plan-image').forEach(img => {
+      img.addEventListener('mouseenter', () => {
+        gsap.to(img, { scale: 1.02, duration: 0.3, ease: 'power2.out' });
+      });
+      img.addEventListener('mouseleave', () => {
+        gsap.to(img, { scale: 1, duration: 0.3, ease: 'power2.out' });
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initPlan);
+</script>
+
+<style>
+  .plan-tab {
+    color: var(--color-text-secondary);
+    transition: color 0.3s ease;
+  }
+
+  .plan-tab:hover,
+  .plan-tab.active {
+    color: var(--color-accent-gold);
+  }
+
+  .plan-content {
+    will-change: opacity, transform;
+    transform-style: preserve-3d;
+  }
+
+  .plan-image {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .plan-image:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .plan-line {
+    will-change: stroke-dashoffset;
+  }
+
+  .plan-corner {
+    will-change: opacity;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .tab-indicator {
+    will-change: left, width;
+  }
+
+  .particle {
+    will-change: transform, opacity;
+  }
+
+  .room-tooltip {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plan-content,
+    .plan-image,
+    .tab-indicator {
+      transition: none !important;
+    }
+
+    .particle {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,135 @@
+---
+// Progress Indicator Component
+// 左端の縦ライン進捗インジケーター
+---
+
+<div id="progress-indicator" class="fixed left-6 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col items-center gap-4">
+  <!-- Progress Line -->
+  <div class="progress-track w-[1px] h-32 bg-border relative">
+    <div class="progress-fill absolute top-0 left-0 w-full h-0 bg-accent-gold"></div>
+  </div>
+
+  <!-- Current Section Label -->
+  <div class="progress-label writing-vertical font-serif text-xs tracking-widest text-text-secondary rotate-180">
+    <span class="section-name">HERO</span>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initProgressIndicator = () => {
+    const progressFill = document.querySelector('.progress-fill');
+    const sectionName = document.querySelector('.section-name');
+
+    if (!progressFill || !sectionName) return;
+
+    // Update progress bar based on scroll
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        gsap.to(progressFill, {
+          height: `${self.progress * 100}%`,
+          duration: 0.1,
+          ease: 'none'
+        });
+      }
+    });
+
+    // Section name mapping
+    const sectionNames: { [key: string]: string } = {
+      'hero': 'HERO',
+      'introduction': 'CONCEPT',
+      'location': 'LOCATION',
+      'design': 'DESIGN',
+      'view': 'VIEW',
+      'interior': 'INTERIOR',
+      'quality': 'QUALITY',
+      'plan': 'PLAN',
+      'life-info': 'LIFE',
+      'access': 'ACCESS',
+      'outline': 'OUTLINE',
+      'contact': 'CONTACT'
+    };
+
+    // Track current section
+    let currentSection = '';
+    const sections = document.querySelectorAll('section[id]');
+
+    const updateSectionName = (newName: string) => {
+      if (newName === currentSection) return;
+      currentSection = newName;
+
+      gsap.to(sectionName, {
+        opacity: 0,
+        duration: 0.15,
+        onComplete: () => {
+          sectionName.textContent = newName;
+          gsap.to(sectionName, { opacity: 1, duration: 0.15 });
+        }
+      });
+    };
+
+    // Create ScrollTrigger for each section
+    sections.forEach((section) => {
+      const id = section.id;
+      const name = sectionNames[id] || id.toUpperCase();
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 60%',
+        end: 'bottom 40%',
+        onEnter: () => updateSectionName(name),
+        onEnterBack: () => updateSectionName(name),
+        onLeave: () => {},
+        onLeaveBack: () => {}
+      });
+    });
+
+    // Also check on scroll for more reliable detection
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: () => {
+        const viewportCenter = window.innerHeight / 2;
+        let closestSection = '';
+        let closestDistance = Infinity;
+
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          const sectionCenter = rect.top + rect.height / 2;
+          const distance = Math.abs(sectionCenter - viewportCenter);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            const id = section.id;
+            closestSection = sectionNames[id] || id.toUpperCase();
+          }
+        });
+
+        if (closestSection && closestSection !== currentSection) {
+          updateSectionName(closestSection);
+        }
+      }
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initProgressIndicator);
+</script>
+
+<style>
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .progress-fill {
+    will-change: height;
+  }
+</style>

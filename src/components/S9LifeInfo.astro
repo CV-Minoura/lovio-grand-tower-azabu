@@ -1,0 +1,619 @@
+---
+// S9. Life Information Component
+// 周辺環境マップ - 全9カテゴリ対応
+---
+
+<section id="life-info" data-section="P1-S9" class="section-padding bg-surface">
+  <div class="container-wide">
+    <!-- Section Title -->
+    <div class="section-title">
+      <p class="section-title-en">LIFE INFORMATION</p>
+      <h2 class="section-title-jp">周辺環境</h2>
+    </div>
+
+    <!-- Category Filter - Horizontal scroll on mobile -->
+    <div class="life-filter flex gap-2 md:gap-3 mb-8 md:mb-12 overflow-x-auto md:overflow-visible md:flex-wrap md:justify-center pb-2 md:pb-0 -mx-6 px-6 md:mx-0 md:px-0">
+      <button class="filter-btn active" data-category="all">
+        <span>すべて</span>
+      </button>
+      <button class="filter-btn" data-category="shopping">
+        <span>商業施設</span>
+      </button>
+      <button class="filter-btn" data-category="gourmet">
+        <span>グルメ</span>
+      </button>
+      <button class="filter-btn" data-category="culture">
+        <span>文化・アート</span>
+      </button>
+      <button class="filter-btn" data-category="park">
+        <span>公園・緑地</span>
+      </button>
+      <button class="filter-btn" data-category="education">
+        <span>教育</span>
+      </button>
+      <button class="filter-btn" data-category="medical">
+        <span>医療</span>
+      </button>
+      <button class="filter-btn" data-category="fitness">
+        <span>フィットネス</span>
+      </button>
+      <button class="filter-btn" data-category="convenience">
+        <span>日常利便</span>
+      </button>
+      <button class="filter-btn" data-category="embassy">
+        <span>大使館</span>
+      </button>
+    </div>
+
+    <!-- Featured Images Grid - 2 cols mobile, 3 cols desktop -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-12">
+      <!-- 商業施設 -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="shopping">
+        <img
+          src="/images/9-1. 商業施設.png"
+          alt="六本木ヒルズ"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">六本木ヒルズ</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩8分</p>
+        </div>
+      </div>
+
+      <!-- 麻布十番商店街 -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="shopping">
+        <img
+          src="/images/9-1. 麻布十番商店街.png"
+          alt="麻布十番商店街"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">麻布十番商店街</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩3分</p>
+        </div>
+      </div>
+
+      <!-- グルメ・カフェ -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="gourmet">
+        <img
+          src="/images/9-2. グルメ・カフェ.png"
+          alt="グルメ・カフェ"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">名店が集う美食の街</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩圏内に多数</p>
+        </div>
+      </div>
+
+      <!-- 文化・アート -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="culture">
+        <img
+          src="/images/9-3. 文化・アート.png"
+          alt="国立新美術館"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">国立新美術館</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩12分</p>
+        </div>
+      </div>
+
+      <!-- 公園・緑地 -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="park">
+        <img
+          src="/images/9-4. 公園・緑地.png"
+          alt="有栖川宮記念公園"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">有栖川宮記念公園</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩10分</p>
+        </div>
+      </div>
+
+      <!-- 教育 -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="education">
+        <img
+          src="/images/9-5. 教育.png"
+          alt="インターナショナルスクール"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">インターナショナルスクール</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩10分</p>
+        </div>
+      </div>
+
+      <!-- 医療 -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="medical">
+        <img
+          src="/images/9-6. 医療.png"
+          alt="医療施設"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">東京都済生会中央病院</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩12分</p>
+        </div>
+      </div>
+
+      <!-- フィットネス -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="fitness">
+        <img
+          src="/images/9-7. フィットネス.png"
+          alt="フィットネスクラブ"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">プレミアムフィットネス</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩5分</p>
+        </div>
+      </div>
+
+      <!-- 日常利便 -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="convenience">
+        <img
+          src="/images/9-8. 日常利便.png"
+          alt="日常利便施設"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">成城石井</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩3分</p>
+        </div>
+      </div>
+
+      <!-- 大使館エリア -->
+      <div class="life-featured-item relative h-40 md:h-64 overflow-hidden rounded-lg group" data-category="embassy">
+        <img
+          src="/images/9-9. 大使館エリア.png"
+          alt="大使館エリア"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        <div class="absolute bottom-3 left-3 md:bottom-6 md:left-6">
+          <p class="font-serif text-sm md:text-lg tracking-wider">各国大使館</p>
+          <p class="text-xs text-text-secondary mt-1">徒歩圏内に多数</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location List - Hidden on mobile -->
+    <div class="life-list hidden md:grid mt-12 grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Shopping -->
+      <div class="life-item" data-category="shopping">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">麻布十番商店街</h4>
+            <p class="text-xs text-text-secondary">徒歩3分（約240m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="shopping">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">六本木ヒルズ</h4>
+            <p class="text-xs text-text-secondary">徒歩8分（約640m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="shopping">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">東京ミッドタウン</h4>
+            <p class="text-xs text-text-secondary">徒歩10分（約800m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gourmet -->
+      <div class="life-item" data-category="gourmet">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">浪花家総本店</h4>
+            <p class="text-xs text-text-secondary">徒歩4分（約320m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="gourmet">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">更科堀井</h4>
+            <p class="text-xs text-text-secondary">徒歩5分（約400m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="gourmet">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">豆源</h4>
+            <p class="text-xs text-text-secondary">徒歩4分（約320m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Culture -->
+      <div class="life-item" data-category="culture">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">国立新美術館</h4>
+            <p class="text-xs text-text-secondary">徒歩12分（約960m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="culture">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">森美術館</h4>
+            <p class="text-xs text-text-secondary">徒歩8分（約640m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="culture">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">サントリー美術館</h4>
+            <p class="text-xs text-text-secondary">徒歩10分（約800m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Park -->
+      <div class="life-item" data-category="park">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">有栖川宮記念公園</h4>
+            <p class="text-xs text-text-secondary">徒歩10分（約800m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="park">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">芝公園</h4>
+            <p class="text-xs text-text-secondary">徒歩15分（約1.2km）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="park">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">檜町公園</h4>
+            <p class="text-xs text-text-secondary">徒歩10分（約800m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="life-item" data-category="education">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">港区立南山小学校</h4>
+            <p class="text-xs text-text-secondary">徒歩6分（約480m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="education">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">西町インターナショナルスクール</h4>
+            <p class="text-xs text-text-secondary">徒歩10分（約800m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="education">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">港区立六本木中学校</h4>
+            <p class="text-xs text-text-secondary">徒歩8分（約640m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical -->
+      <div class="life-item" data-category="medical">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">東京都済生会中央病院</h4>
+            <p class="text-xs text-text-secondary">徒歩12分（約960m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="medical">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">麻布十番クリニック</h4>
+            <p class="text-xs text-text-secondary">徒歩4分（約320m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="medical">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">広尾レディースクリニック</h4>
+            <p class="text-xs text-text-secondary">徒歩15分（約1.2km）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fitness -->
+      <div class="life-item" data-category="fitness">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">エニタイムフィットネス麻布十番</h4>
+            <p class="text-xs text-text-secondary">徒歩5分（約400m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="fitness">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">六本木ヒルズクラブ</h4>
+            <p class="text-xs text-text-secondary">徒歩8分（約640m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="fitness">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">東京アメリカンクラブ</h4>
+            <p class="text-xs text-text-secondary">徒歩12分（約960m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Convenience -->
+      <div class="life-item" data-category="convenience">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">成城石井 麻布十番店</h4>
+            <p class="text-xs text-text-secondary">徒歩3分（約240m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="convenience">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">ナチュラルローソン</h4>
+            <p class="text-xs text-text-secondary">徒歩2分（約160m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="convenience">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">麻布十番郵便局</h4>
+            <p class="text-xs text-text-secondary">徒歩4分（約320m）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Embassy -->
+      <div class="life-item" data-category="embassy">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">フランス大使館</h4>
+            <p class="text-xs text-text-secondary">徒歩8分（約640m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="embassy">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">ドイツ大使館</h4>
+            <p class="text-xs text-text-secondary">徒歩10分（約800m）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="life-item" data-category="embassy">
+        <div class="flex items-start gap-4 p-4 border border-border hover:border-accent-gold transition-colors">
+          <div class="w-2 h-2 mt-2 bg-accent-gold rounded-full flex-shrink-0"></div>
+          <div>
+            <h4 class="font-medium mb-1">中国大使館</h4>
+            <p class="text-xs text-text-secondary">徒歩12分（約960m）</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initLifeInfo = () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.life-item');
+    const featuredItems = document.querySelectorAll('.life-featured-item');
+
+    // Category filter
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category');
+
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter list items
+        items.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+
+          if (category === 'all' || itemCategory === category) {
+            gsap.to(item, { opacity: 1, scale: 1, duration: 0.3, display: 'block' });
+          } else {
+            gsap.to(item, {
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.3,
+              onComplete: () => {
+                (item as HTMLElement).style.display = 'none';
+              }
+            });
+          }
+        });
+
+        // Filter featured items
+        featuredItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+
+          if (category === 'all' || itemCategory === category) {
+            gsap.to(item, { opacity: 1, scale: 1, duration: 0.4, display: 'block' });
+          } else {
+            gsap.to(item, {
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.3,
+              onComplete: () => {
+                (item as HTMLElement).style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+    });
+
+    // Scroll animation for featured items
+    ScrollTrigger.create({
+      trigger: '.life-featured-item',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to(featuredItems, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    // Scroll animation for list items
+    ScrollTrigger.create({
+      trigger: '.life-list',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to(items, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.05,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    // Set initial state
+    gsap.set(featuredItems, { opacity: 0, y: 30 });
+    gsap.set(items, { opacity: 0, y: 20 });
+  };
+
+  document.addEventListener('DOMContentLoaded', initLifeInfo);
+</script>
+
+<style>
+  .life-filter {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .life-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 768px) {
+    .filter-btn {
+      padding: 8px 20px;
+      font-size: 0.875rem;
+    }
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    border-color: var(--color-accent-gold);
+    color: var(--color-accent-gold);
+    background-color: rgba(201, 169, 110, 0.1);
+  }
+
+  .life-item,
+  .life-featured-item {
+    will-change: opacity, transform;
+  }
+</style>

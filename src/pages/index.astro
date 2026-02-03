@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Loading from '../components/Loading.astro';
+import Header from '../components/Header.astro';
+import CustomCursor from '../components/CustomCursor.astro';
+import ProgressIndicator from '../components/ProgressIndicator.astro';
+import FloatingCta from '../components/FloatingCta.astro';
+import S1Hero from '../components/S1Hero.astro';
+import S2Introduction from '../components/S2Introduction.astro';
+import S3Location from '../components/S3Location.astro';
+import S4Design from '../components/S4Design.astro';
+import S5View from '../components/S5View.astro';
+import S6Interior from '../components/S6Interior.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import S7Quality from '../components/S7Quality.astro';
+import S8Plan from '../components/S8Plan.astro';
+import S9LifeInfo from '../components/S9LifeInfo.astro';
+import S10Access from '../components/S10Access.astro';
+import S11Outline from '../components/S11Outline.astro';
+import S12FinalCta from '../components/S12FinalCta.astro';
+import S13Footer from '../components/S13Footer.astro';
+import PageTransition from '../components/PageTransition.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+---
+
+<Layout>
+  <!-- Page Transition Overlay -->
+  <PageTransition />
+
+  <!-- Loading Screen -->
+  <Loading />
+
+  <!-- Header -->
+  <Header />
+
+  <!-- Custom Cursor (Desktop only) -->
+  <CustomCursor />
+
+  <!-- Progress Indicator (Desktop only) -->
+  <ProgressIndicator />
+
+  <!-- Floating CTA -->
+  <FloatingCta />
+
+  <!-- Main Content -->
+  <main>
+    <!-- S1: Hero -->
+    <S1Hero />
+
+    <!-- S2: Introduction -->
+    <S2Introduction />
+
+    <SectionDivider variant="diamond" />
+
+    <!-- S3: Location -->
+    <S3Location />
+
+    <!-- S4: Design -->
+    <S4Design />
+
+    <!-- S5: View -->
+    <S5View />
+
+    <!-- S6: Interior -->
+    <S6Interior />
+
+    <SectionDivider variant="dots" />
+
+    <!-- Mid CTA 1 -->
+    <CtaBanner copy="まずは資料でご確認ください" />
+
+    <!-- S7: Quality -->
+    <S7Quality />
+
+    <SectionDivider variant="diamond" />
+
+    <!-- S8: Plan -->
+    <S8Plan />
+
+    <!-- S9: Life Information -->
+    <S9LifeInfo />
+
+    <!-- S10: Access -->
+    <S10Access />
+
+    <SectionDivider variant="line" />
+
+    <!-- Mid CTA 2 -->
+    <CtaBanner copy="物件の詳細をお届けします" />
+
+    <!-- S11: Outline -->
+    <S11Outline />
+
+    <!-- S12: Final CTA -->
+    <S12FinalCta />
+  </main>
+
+  <!-- Footer -->
+  <S13Footer />
+</Layout>

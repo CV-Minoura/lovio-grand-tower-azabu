@@ -1,0 +1,120 @@
+---
+// CTA Banner Component
+// 中間CTAセクション
+interface Props {
+  copy?: string;
+}
+
+const { copy = 'まずは資料でご確認ください' } = Astro.props;
+---
+
+<div class="cta-banner py-20 md:py-24 bg-gradient-to-r from-accent-gold/10 via-accent-gold/20 to-accent-gold/10 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, var(--color-accent-gold) 10px, var(--color-accent-gold) 11px);"></div>
+  </div>
+
+  <div class="container-wide relative z-10 text-center">
+    <p class="cta-copy text-display text-lg md:text-xl text-text-primary mb-8 opacity-0 translate-y-4">
+      {copy}
+    </p>
+    <div class="cta-buttons flex flex-col sm:flex-row justify-center gap-4 opacity-0 translate-y-4">
+      <a href="#contact" class="cta-btn btn bg-white text-accent-gold hover:bg-accent-light hover:text-background relative overflow-hidden" data-magnetic>
+        <span class="relative z-10">資料を請求する</span>
+        <span class="cta-btn-shine absolute inset-0 opacity-0"></span>
+      </a>
+      <a href="#contact" class="cta-btn btn bg-white text-accent-gold hover:bg-accent-light hover:text-background relative overflow-hidden" data-magnetic>
+        <span class="relative z-10">来場予約する</span>
+        <span class="cta-btn-shine absolute inset-0 opacity-0"></span>
+      </a>
+    </div>
+    <p class="cta-micro text-xs text-text-secondary mt-6 opacity-0">
+      完全予約制・個別対応
+    </p>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initCtaBanner = () => {
+    document.querySelectorAll('.cta-banner').forEach(banner => {
+      const copy = banner.querySelector('.cta-copy');
+      const buttons = banner.querySelector('.cta-buttons');
+      const micro = banner.querySelector('.cta-micro');
+
+      ScrollTrigger.create({
+        trigger: banner,
+        start: 'top 80%',
+        onEnter: () => {
+          gsap.to(copy, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
+          gsap.to(buttons, { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power2.out' });
+          gsap.to(micro, { opacity: 1, duration: 0.6, delay: 0.4, ease: 'power2.out' });
+        }
+      });
+
+      // Magnetic button effect
+      if (window.innerWidth >= 768) {
+        banner.querySelectorAll('.cta-btn').forEach(btn => {
+          const btnEl = btn as HTMLElement;
+          const shine = btnEl.querySelector('.cta-btn-shine') as HTMLElement;
+
+          btnEl.addEventListener('mousemove', (e) => {
+            const rect = btnEl.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            gsap.to(btnEl, {
+              x: x * 0.2,
+              y: y * 0.2,
+              duration: 0.3,
+              ease: 'power2.out'
+            });
+          });
+
+          btnEl.addEventListener('mouseenter', () => {
+            gsap.to(shine, { opacity: 1, duration: 0.3 });
+          });
+
+          btnEl.addEventListener('mouseleave', () => {
+            gsap.to(btnEl, {
+              x: 0,
+              y: 0,
+              duration: 0.5,
+              ease: 'elastic.out(1, 0.5)'
+            });
+            gsap.to(shine, { opacity: 0, duration: 0.3 });
+          });
+        });
+      }
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initCtaBanner);
+</script>
+
+<style>
+  .cta-btn {
+    will-change: transform;
+  }
+
+  .cta-btn-shine {
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(201, 169, 110, 0.3) 50%,
+      transparent 70%
+    );
+    will-change: opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-btn,
+    .cta-btn-shine {
+      transition: none !important;
+    }
+  }
+</style>

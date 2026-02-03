@@ -1,0 +1,226 @@
+---
+// S13. Footer Component
+// Premium Footer with Parallax, Link Animations, Reveal Effects
+---
+
+<footer id="footer" data-section="P1-S13" class="bg-background border-t border-accent-gold/30 relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="footer-bg absolute inset-0 opacity-5 pointer-events-none">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(201,169,110,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="container-wide py-16 md:py-24 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      <!-- Logo & Company -->
+      <div class="md:col-span-2 footer-content">
+        <h2 class="footer-logo font-serif text-xl md:text-2xl tracking-[0.2em] mb-6 opacity-0">
+          <span class="footer-logo-char">L</span><span class="footer-logo-char">I</span><span class="footer-logo-char">V</span><span class="footer-logo-char">I</span><span class="footer-logo-char">O</span>
+          <span class="footer-logo-char ml-2">G</span><span class="footer-logo-char">R</span><span class="footer-logo-char">A</span><span class="footer-logo-char">N</span><span class="footer-logo-char">D</span>
+          <span class="footer-logo-char ml-2">T</span><span class="footer-logo-char">O</span><span class="footer-logo-char">W</span><span class="footer-logo-char">E</span><span class="footer-logo-char">R</span>
+          <span class="footer-logo-char ml-2">A</span><span class="footer-logo-char">Z</span><span class="footer-logo-char">A</span><span class="footer-logo-char">B</span><span class="footer-logo-char">U</span>
+        </h2>
+        <p class="footer-info text-text-secondary text-sm mb-4 opacity-0">
+          売主：架空デベロッパー株式会社
+        </p>
+        <p class="footer-info text-text-secondary text-sm opacity-0">
+          〒106-XXXX 東京都港区麻布十番X-XX-X
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="flex flex-col md:items-end footer-links">
+        <nav class="space-y-3 text-sm">
+          <a href="#" class="footer-link block text-text-secondary hover:text-accent-gold transition-colors relative group opacity-0">
+            <span class="relative z-10">プライバシーポリシー</span>
+            <span class="footer-link-line absolute bottom-0 left-0 w-0 h-px bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#" class="footer-link block text-text-secondary hover:text-accent-gold transition-colors relative group opacity-0">
+            <span class="relative z-10">利用規約</span>
+            <span class="footer-link-line absolute bottom-0 left-0 w-0 h-px bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#" class="footer-link block text-text-secondary hover:text-accent-gold transition-colors relative group opacity-0">
+            <span class="relative z-10">特定商取引法に基づく表記</span>
+            <span class="footer-link-line absolute bottom-0 left-0 w-0 h-px bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Divider Line Animation -->
+    <div class="footer-divider mt-16 pt-8 border-t border-border relative">
+      <div class="footer-divider-line absolute top-0 left-1/2 -translate-x-1/2 h-px w-0 bg-accent-gold/30"></div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="footer-disclaimer opacity-0">
+      <p class="text-xs text-text-secondary leading-relaxed">
+        ※掲載の写真はイメージです。実際とは異なる場合がございます。<br />
+        ※掲載の間取り図は設計段階のもので、変更になる場合がございます。<br />
+        ※価格は予定であり、変更になる場合がございます。<br />
+        ※本物件はポートフォリオ用の架空物件です。実在の物件・企業名ではありません。
+      </p>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="footer-copyright text-xs text-text-secondary opacity-0">
+        &copy; 2026 LIVIO GRAND TOWER AZABU All Rights Reserved.
+      </p>
+
+      <!-- Back to Top -->
+      <button id="back-to-top" class="back-to-top flex items-center gap-2 text-text-secondary hover:text-accent-gold transition-colors group opacity-0">
+        <span class="text-xs tracking-wider">PAGE TOP</span>
+        <span class="back-to-top-icon relative w-8 h-8 border border-current rounded-full flex items-center justify-center overflow-hidden">
+          <svg class="w-4 h-4 transform group-hover:-translate-y-6 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+          </svg>
+          <svg class="w-4 h-4 absolute translate-y-6 group-hover:translate-y-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initFooter = () => {
+    const logoChars = document.querySelectorAll('.footer-logo-char');
+    const footerInfo = document.querySelectorAll('.footer-info');
+    const footerLinks = document.querySelectorAll('.footer-link');
+    const dividerLine = document.querySelector('.footer-divider-line');
+    const disclaimer = document.querySelector('.footer-disclaimer');
+    const copyright = document.querySelector('.footer-copyright');
+    const backToTop = document.querySelector('.back-to-top');
+
+    // Initial states
+    gsap.set(logoChars, { opacity: 0, y: 20 });
+
+    // Footer reveal animation
+    ScrollTrigger.create({
+      trigger: '#footer',
+      start: 'top 80%',
+      onEnter: () => {
+        // Logo characters
+        gsap.to(logoChars, {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.02,
+          ease: 'power2.out'
+        });
+
+        // Info
+        gsap.to(footerInfo, {
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          delay: 0.3,
+          ease: 'power2.out'
+        });
+
+        // Links
+        gsap.to(footerLinks, {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          delay: 0.4,
+          ease: 'power2.out'
+        });
+
+        // Divider line
+        gsap.to(dividerLine, {
+          width: '100%',
+          duration: 0.8,
+          delay: 0.5,
+          ease: 'power2.out'
+        });
+
+        // Disclaimer
+        gsap.to(disclaimer, {
+          opacity: 1,
+          duration: 0.6,
+          delay: 0.6,
+          ease: 'power2.out'
+        });
+
+        // Copyright & Back to top
+        gsap.to([copyright, backToTop], {
+          opacity: 1,
+          duration: 0.6,
+          delay: 0.7,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    // Back to top
+    const backToTopBtn = document.getElementById('back-to-top');
+    backToTopBtn?.addEventListener('click', () => {
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(0, { duration: 1.5 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Parallax background
+    const footerBg = document.querySelector('.footer-bg');
+    if (footerBg) {
+      ScrollTrigger.create({
+        trigger: '#footer',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+        onUpdate: (self) => {
+          gsap.set(footerBg, {
+            y: self.progress * 50
+          });
+        }
+      });
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', initFooter);
+</script>
+
+<style>
+  .footer-logo-char {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+
+  .footer-link {
+    transform: translateX(10px);
+  }
+
+  .footer-divider-line {
+    will-change: width;
+  }
+
+  .footer-bg {
+    will-change: transform;
+  }
+
+  .back-to-top-icon {
+    transition: border-color 0.3s ease;
+  }
+
+  .back-to-top:hover .back-to-top-icon {
+    border-color: var(--color-accent-gold);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-logo-char,
+    .footer-divider-line,
+    .footer-bg {
+      transition: none !important;
+    }
+  }
+</style>

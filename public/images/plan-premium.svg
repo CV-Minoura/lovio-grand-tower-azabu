@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect fill="#f5f5f5" width="400" height="300"/>
+  <rect fill="none" stroke="#C9A96E" stroke-width="2" x="20" y="20" width="360" height="260"/>
+  <!-- LDK -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="30" y="30" width="220" height="140"/>
+  <text x="140" y="105" text-anchor="middle" fill="#666" font-size="14">LDK</text>
+  <!-- Master -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="260" y="30" width="110" height="90"/>
+  <text x="315" y="80" text-anchor="middle" fill="#666" font-size="12">主寝室</text>
+  <!-- Bedroom 2 -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="260" y="130" width="55" height="60"/>
+  <text x="287" y="165" text-anchor="middle" fill="#666" font-size="9">洋室2</text>
+  <!-- Bedroom 3 -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="320" y="130" width="50" height="60"/>
+  <text x="345" y="165" text-anchor="middle" fill="#666" font-size="9">洋室3</text>
+  <!-- Study -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="260" y="200" width="110" height="50"/>
+  <text x="315" y="230" text-anchor="middle" fill="#666" font-size="10">書斎</text>
+  <!-- Bath -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="30" y="180" width="80" height="70"/>
+  <text x="70" y="220" text-anchor="middle" fill="#666" font-size="10">浴室</text>
+  <!-- Entrance -->
+  <rect fill="none" stroke="#333" stroke-width="1" x="120" y="220" width="70" height="40"/>
+  <text x="155" y="245" text-anchor="middle" fill="#666" font-size="10">玄関</text>
+  <text x="200" y="290" text-anchor="middle" fill="#C9A96E" font-size="12" font-weight="bold">PREMIUM / 128.56m²</text>
+</svg>

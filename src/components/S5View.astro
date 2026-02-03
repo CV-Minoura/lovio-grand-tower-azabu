@@ -1,0 +1,664 @@
+---
+// S5. View Component
+// パノラマビュー + 昼夜切り替え（ダイナミック版）
+---
+
+<section id="view" data-section="P1-S5" class="relative py-32 md:py-48 bg-background overflow-hidden">
+  <!-- Background Ambient -->
+  <div class="view-ambient absolute inset-0 pointer-events-none"></div>
+
+  <div class="container-wide relative z-10">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16">
+      <div>
+        <p class="view-label font-serif text-xs tracking-[0.4em] text-accent-gold mb-3 opacity-0">
+          32F PANORAMIC VIEW
+        </p>
+        <h2 class="view-title text-display text-3xl md:text-4xl lg:text-5xl font-medium opacity-0">
+          東京を、見下ろす
+        </h2>
+      </div>
+
+      <!-- Time Selector -->
+      <div class="view-time-selector flex items-center gap-1 mt-6 md:mt-0 opacity-0">
+        <div class="time-track relative flex items-center bg-surface border border-border rounded-full p-1">
+          <div class="time-indicator"></div>
+          <button class="time-btn active" data-time="day" data-index="0">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          </button>
+          <button class="time-btn" data-time="evening" data-index="1">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 3v1M12 20v1M5.6 5.6l.7.7M17.7 17.7l.7.7M3 12h1M20 12h1M5.6 18.4l.7-.7M17.7 6.3l.7-.7"/>
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 16a4 4 0 0 0 0-8" fill="none" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </button>
+          <button class="time-btn" data-time="night" data-index="2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panorama Showcase -->
+    <div class="view-showcase relative">
+      <!-- Main Panorama Window -->
+      <div class="view-window relative overflow-hidden rounded-sm">
+        <!-- Scanning Line Effect -->
+        <div class="scan-line"></div>
+
+        <!-- Panorama Track (Horizontal Scroll) -->
+        <div class="panorama-track">
+          <!-- Day -->
+          <div class="panorama-slide panorama-day active">
+            <div class="panorama-image">
+              <img
+                src="/images/5-1. パノラマビュー（昼）.png"
+                alt="昼の眺望"
+                decoding="async"
+              />
+            </div>
+          </div>
+          <!-- Evening -->
+          <div class="panorama-slide panorama-evening">
+            <div class="panorama-image">
+              <img
+                src="/images/5-2. パノラマビュー（夕方）.png"
+                alt="夕方の眺望"
+                decoding="async"
+              />
+            </div>
+          </div>
+          <!-- Night -->
+          <div class="panorama-slide panorama-night">
+            <div class="panorama-image">
+              <img
+                src="/images/5-3. パノラマビュー（夜）.png"
+                alt="夜の眺望"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Vignette -->
+        <div class="panorama-vignette"></div>
+
+        <!-- Corner Frame -->
+        <div class="corner-frame corner-tl"></div>
+        <div class="corner-frame corner-tr"></div>
+        <div class="corner-frame corner-bl"></div>
+        <div class="corner-frame corner-br"></div>
+
+        <!-- Landmark Markers -->
+        <div class="landmarks-layer">
+          <div class="landmark-marker" data-name="富士山" style="--x: 15%; --y: 42%;">
+            <div class="marker-ring"></div>
+            <div class="marker-dot"></div>
+            <div class="marker-label">富士山</div>
+          </div>
+          <div class="landmark-marker" data-name="東京タワー" style="--x: 35%; --y: 38%;">
+            <div class="marker-ring"></div>
+            <div class="marker-dot"></div>
+            <div class="marker-label">東京タワー</div>
+          </div>
+          <div class="landmark-marker" data-name="スカイツリー" style="--x: 70%; --y: 30%;">
+            <div class="marker-ring"></div>
+            <div class="marker-dot"></div>
+            <div class="marker-label">スカイツリー</div>
+          </div>
+        </div>
+
+        <!-- Time Label Overlay -->
+        <div class="time-label-overlay">
+          <span class="time-label-text">DAY</span>
+        </div>
+      </div>
+
+      <!-- Info Cards -->
+      <div class="view-info-cards grid grid-cols-3 gap-4 mt-6">
+        <div class="info-card opacity-0">
+          <div class="info-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <p class="info-value">32<span>階</span></p>
+          <p class="info-label">最上階住戸</p>
+        </div>
+        <div class="info-card opacity-0">
+          <div class="info-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+          </div>
+          <p class="info-value">270<span>°</span></p>
+          <p class="info-label">パノラマビュー</p>
+        </div>
+        <div class="info-card opacity-0">
+          <div class="info-icon">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <p class="info-value">3<span>大</span></p>
+          <p class="info-label">ランドマーク</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Text -->
+    <p class="view-note text-center text-xs text-text-secondary mt-8 opacity-0">
+      ※眺望は階数・住戸位置により異なります。掲載の眺望写真は32階相当からの眺望を撮影したものです。
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initView = () => {
+    const section = document.getElementById('view');
+    const viewLabel = document.querySelector('.view-label');
+    const viewTitle = document.querySelector('.view-title');
+    const timeSelector = document.querySelector('.view-time-selector');
+    const viewWindow = document.querySelector('.view-window');
+    const timeBtns = document.querySelectorAll('.time-btn');
+    const timeIndicator = document.querySelector('.time-indicator');
+    const timeLabelText = document.querySelector('.time-label-text');
+    const slides = document.querySelectorAll('.panorama-slide');
+    const landmarks = document.querySelectorAll('.landmark-marker');
+    const infoCards = document.querySelectorAll('.info-card');
+    const viewNote = document.querySelector('.view-note');
+    const scanLine = document.querySelector('.scan-line');
+
+    const timeLabels = { day: 'DAY', evening: 'EVENING', night: 'NIGHT' };
+    let currentTime = 'day';
+    let isAnimating = false;
+
+    // Set time function
+    const setTime = (time: string) => {
+      if (isAnimating || time === currentTime) return;
+      isAnimating = true;
+
+      const prevTime = currentTime;
+      currentTime = time;
+
+      // Update buttons
+      timeBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-time') === time) {
+          btn.classList.add('active');
+          const index = parseInt(btn.getAttribute('data-index') || '0');
+          gsap.to(timeIndicator, {
+            x: index * 44,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        }
+      });
+
+      // Update time label
+      gsap.to(timeLabelText, {
+        opacity: 0,
+        y: -10,
+        duration: 0.2,
+        onComplete: () => {
+          if (timeLabelText) timeLabelText.textContent = timeLabels[time as keyof typeof timeLabels];
+          gsap.to(timeLabelText, { opacity: 1, y: 0, duration: 0.3 });
+        }
+      });
+
+      // Slide transition
+      slides.forEach(slide => {
+        const slideTime = slide.classList.contains('panorama-day') ? 'day' :
+                         slide.classList.contains('panorama-evening') ? 'evening' : 'night';
+
+        if (slideTime === time) {
+          slide.classList.add('active');
+          gsap.fromTo(slide.querySelector('.panorama-image'),
+            { scale: 1.1, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 1, ease: 'power2.out' }
+          );
+        } else {
+          gsap.to(slide.querySelector('.panorama-image'), {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => slide.classList.remove('active')
+          });
+        }
+      });
+
+      // Scan line effect
+      gsap.fromTo(scanLine,
+        { top: '0%', opacity: 0.8 },
+        { top: '100%', opacity: 0, duration: 0.8, ease: 'power2.inOut' }
+      );
+
+      setTimeout(() => { isAnimating = false; }, 1000);
+    };
+
+    // Button clicks
+    timeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const time = btn.getAttribute('data-time');
+        if (time) setTime(time);
+      });
+    });
+
+    // Parallax on mouse move
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    viewWindow?.addEventListener('mousemove', (e) => {
+      const rect = viewWindow.getBoundingClientRect();
+      mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+      mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+    });
+
+    viewWindow?.addEventListener('mouseleave', () => {
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    const updateParallax = () => {
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+
+      const activeSlide = document.querySelector('.panorama-slide.active .panorama-image');
+      if (activeSlide) {
+        gsap.set(activeSlide, {
+          x: targetX * 30,
+          y: targetY * 20
+        });
+      }
+
+      // Landmarks parallax (opposite direction for depth)
+      landmarks.forEach((landmark, i) => {
+        const depth = 1 + i * 0.3;
+        gsap.set(landmark, {
+          x: -targetX * 15 * depth,
+          y: -targetY * 10 * depth
+        });
+      });
+
+      requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+
+    // Scroll animations
+    gsap.set(viewWindow, { opacity: 0, y: 40 });
+    gsap.set(landmarks, { opacity: 0, scale: 0 });
+
+    ScrollTrigger.create({
+      trigger: '#view',
+      start: 'top 70%',
+      onEnter: () => {
+        gsap.to(viewLabel, { opacity: 1, duration: 0.6 });
+        gsap.to(viewTitle, { opacity: 1, duration: 0.8, delay: 0.1 });
+        gsap.to(timeSelector, { opacity: 1, duration: 0.6, delay: 0.2 });
+
+        gsap.to(viewWindow, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.3,
+          ease: 'power2.out'
+        });
+
+        gsap.to(landmarks, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          stagger: 0.15,
+          delay: 1,
+          ease: 'back.out(2)'
+        });
+
+        gsap.to(infoCards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.1,
+          delay: 0.8
+        });
+
+        gsap.to(viewNote, { opacity: 1, duration: 0.6, delay: 1.2 });
+
+        // Initial scan line
+        gsap.fromTo(scanLine,
+          { top: '0%', opacity: 0.6 },
+          { top: '100%', opacity: 0, duration: 1.2, delay: 0.5, ease: 'power2.inOut' }
+        );
+      }
+    });
+
+    // Continuous subtle Ken Burns
+    const kenBurns = () => {
+      const activeImage = document.querySelector('.panorama-slide.active .panorama-image img');
+      if (activeImage) {
+        gsap.to(activeImage, {
+          scale: 1.05,
+          duration: 20,
+          ease: 'none',
+          yoyo: true,
+          repeat: -1
+        });
+      }
+    };
+
+    setTimeout(kenBurns, 1500);
+
+    // Auto cycle
+    setInterval(() => {
+      const times = ['day', 'evening', 'night'];
+      const currentIndex = times.indexOf(currentTime);
+      const nextIndex = (currentIndex + 1) % 3;
+      setTime(times[nextIndex]);
+    }, 10000);
+  };
+
+  document.addEventListener('DOMContentLoaded', initView);
+</script>
+
+<style>
+  /* Ambient Background */
+  .view-ambient {
+    background: radial-gradient(ellipse at 50% 0%, rgba(201, 169, 110, 0.03) 0%, transparent 50%);
+  }
+
+  /* Time Selector */
+  .time-track {
+    gap: 4px;
+  }
+
+  .time-indicator {
+    position: absolute;
+    left: 4px;
+    width: 40px;
+    height: 40px;
+    background: var(--color-accent-gold);
+    border-radius: 50%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+
+  .time-btn {
+    position: relative;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    transition: color 0.3s ease;
+    border-radius: 50%;
+  }
+
+  .time-btn.active {
+    color: var(--color-background);
+  }
+
+  .time-btn:not(.active):hover {
+    color: var(--color-accent-gold);
+  }
+
+  /* View Window */
+  .view-window {
+    position: relative;
+    aspect-ratio: 21/9;
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  /* Scan Line */
+  .scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+    z-index: 20;
+    pointer-events: none;
+    opacity: 0;
+    box-shadow: 0 0 20px var(--color-accent-gold);
+  }
+
+  /* Panorama Track */
+  .panorama-track {
+    position: absolute;
+    inset: 0;
+  }
+
+  .panorama-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .panorama-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .panorama-image {
+    position: absolute;
+    inset: -20px;
+    will-change: transform, opacity;
+  }
+
+  .panorama-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  /* Vignette */
+  .panorama-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 10, 0.4) 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Corner Frames */
+  .corner-frame {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .corner-frame::before,
+  .corner-frame::after {
+    content: '';
+    position: absolute;
+    background: var(--color-accent-gold);
+  }
+
+  .corner-tl { top: 16px; left: 16px; }
+  .corner-tl::before { top: 0; left: 0; width: 40px; height: 1px; }
+  .corner-tl::after { top: 0; left: 0; width: 1px; height: 40px; }
+
+  .corner-tr { top: 16px; right: 16px; }
+  .corner-tr::before { top: 0; right: 0; width: 40px; height: 1px; }
+  .corner-tr::after { top: 0; right: 0; width: 1px; height: 40px; }
+
+  .corner-bl { bottom: 16px; left: 16px; }
+  .corner-bl::before { bottom: 0; left: 0; width: 40px; height: 1px; }
+  .corner-bl::after { bottom: 0; left: 0; width: 1px; height: 40px; }
+
+  .corner-br { bottom: 16px; right: 16px; }
+  .corner-br::before { bottom: 0; right: 0; width: 40px; height: 1px; }
+  .corner-br::after { bottom: 0; right: 0; width: 1px; height: 40px; }
+
+  /* Landmarks */
+  .landmarks-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    pointer-events: none;
+  }
+
+  .landmark-marker {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+
+  .marker-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--color-accent-gold);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(201, 169, 110, 0.8);
+  }
+
+  .marker-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--color-accent-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ringPulse 2s ease-out infinite;
+  }
+
+  @keyframes ringPulse {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+  }
+
+  .marker-label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    color: var(--color-text-primary);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3px 10px;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Time Label Overlay */
+  .time-label-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 15;
+  }
+
+  .time-label-text {
+    font-family: var(--font-serif);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--color-accent-gold);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Info Cards */
+  .info-card {
+    text-align: center;
+    padding: 20px 16px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover {
+    border-color: var(--color-accent-gold);
+    transform: translateY(-4px);
+  }
+
+  .info-icon {
+    color: var(--color-accent-gold);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-value {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    color: var(--color-text-primary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .info-value span {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.05em;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .view-window {
+      aspect-ratio: 4/3;
+    }
+
+    .corner-frame {
+      width: 24px;
+      height: 24px;
+    }
+
+    .corner-frame::before { width: 24px !important; }
+    .corner-frame::after { height: 24px !important; }
+
+    .corner-tl, .corner-tr { top: 8px; }
+    .corner-bl, .corner-br { bottom: 8px; }
+    .corner-tl, .corner-bl { left: 8px; }
+    .corner-tr, .corner-br { right: 8px; }
+
+    .landmark-marker {
+      display: none;
+    }
+
+    .info-card {
+      padding: 12px 8px;
+    }
+
+    .info-value {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marker-ring,
+    .panorama-image img,
+    .scan-line {
+      animation: none !important;
+    }
+  }
+</style>

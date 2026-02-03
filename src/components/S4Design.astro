@@ -1,0 +1,405 @@
+---
+// S4. Design - Exterior & Common Component
+// Premium 横スクロールギャラリー with 3D Tilt, Mask Reveal, Cinematic Effects
+---
+
+<section id="design" data-section="P1-S4" class="relative bg-background overflow-hidden">
+  <!-- Fixed Title -->
+  <div class="design-title absolute left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
+    <p class="font-serif text-xs tracking-[0.3em] text-accent-gold writing-vertical rotate-180">DESIGN</p>
+  </div>
+
+  <!-- Mobile Title -->
+  <div class="section-title pt-24 pb-12 lg:hidden">
+    <p class="section-title-en">DESIGN</p>
+    <h2 class="section-title-jp">外観・共用部</h2>
+  </div>
+
+  <!-- Horizontal Scroll Gallery -->
+  <div class="design-gallery-wrapper h-screen">
+    <div class="design-gallery flex items-center h-full">
+      <!-- Gallery Items -->
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/4-1. 外観（昼）.png"
+            alt="外観（昼）"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">EXTERIOR - DAY</p>
+          <p class="text-xs text-text-secondary mt-1">外観（昼景）</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/4-2. 外観（夜・ライトアップ）.png"
+            alt="外観（夜）"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">EXTERIOR - NIGHT</p>
+          <p class="text-xs text-text-secondary mt-1">外観（夜景）</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/4-3. エントランスホール.png"
+            alt="エントランスホール"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">ENTRANCE HALL</p>
+          <p class="text-xs text-text-secondary mt-1">エントランスホール</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/4-4. ロビーラウンジ.png"
+            alt="ロビーラウンジ"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">LOBBY LOUNGE</p>
+          <p class="text-xs text-text-secondary mt-1">ロビーラウンジ</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/ジム.png"
+            alt="フィットネスジム"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">FITNESS GYM</p>
+          <p class="text-xs text-text-secondary mt-1">フィットネスジム</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/4-5. スカイラウンジ.png"
+            alt="スカイラウンジ"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">SKY LOUNGE</p>
+          <p class="text-xs text-text-secondary mt-1">スカイラウンジ</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <div class="design-item flex-shrink-0 w-[80vw] md:w-[60vw] lg:w-[45vw] h-[70vh] md:h-[75vh] lg:h-[80vh] mx-2 md:mx-5 relative cursor-pointer" data-cursor-text="VIEW">
+        <div class="design-item-inner relative w-full h-full overflow-hidden">
+          <div class="design-mask absolute inset-0 bg-background z-10"></div>
+          <img
+            src="/images/4-6. 中庭・植栽.png"
+            alt="中庭・植栽"
+            class="design-img w-full h-full object-cover"
+            decoding="async"
+          />
+          <div class="design-overlay absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0"></div>
+          <div class="design-shine absolute inset-0 pointer-events-none"></div>
+        </div>
+        <div class="design-caption absolute bottom-6 left-6 z-20 opacity-0 translate-y-4">
+          <p class="text-sm tracking-wider">GARDEN</p>
+          <p class="text-xs text-text-secondary mt-1">中庭・植栽</p>
+        </div>
+        <div class="design-frame absolute inset-4 border border-accent-gold/0 pointer-events-none z-20"></div>
+      </div>
+
+      <!-- End Spacer -->
+      <div class="flex-shrink-0 w-[10vw]"></div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress (Desktop only) -->
+  <div class="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 items-center gap-4">
+    <span class="text-xs tracking-wider text-text-secondary">SCROLL</span>
+    <div class="w-24 h-[1px] bg-border relative overflow-hidden">
+      <div class="design-progress absolute top-0 left-0 h-full w-0 bg-accent-gold"></div>
+      <div class="design-progress-glow absolute top-0 left-0 h-full w-0 bg-accent-gold blur-sm"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initDesign = () => {
+    const gallery = document.querySelector('.design-gallery');
+    const wrapper = document.querySelector('.design-gallery-wrapper');
+    const items = document.querySelectorAll('.design-item');
+    const progress = document.querySelector('.design-progress');
+    const progressGlow = document.querySelector('.design-progress-glow');
+
+    if (!gallery || !wrapper) return;
+
+    // Remove masks on mobile
+    if (window.innerWidth < 1024) {
+      items.forEach(item => {
+        const mask = item.querySelector('.design-mask') as HTMLElement;
+        if (mask) mask.style.display = 'none';
+        const caption = item.querySelector('.design-caption') as HTMLElement;
+        if (caption) {
+          caption.style.opacity = '1';
+          caption.style.transform = 'none';
+        }
+      });
+    }
+
+    // Calculate total width based on screen size
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth < 1024;
+    const itemWidth = isMobile ? window.innerWidth * 0.8 : isTablet ? window.innerWidth * 0.6 : window.innerWidth * 0.45;
+    const itemGap = isMobile ? 16 : 40;
+    const totalWidth = (items.length * (itemWidth + itemGap)) + (window.innerWidth * 0.2);
+
+    // Pin and horizontal scroll
+    const scrollTween = gsap.to(gallery, {
+      x: -(totalWidth - window.innerWidth),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top top',
+        end: () => `+=${totalWidth}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          gsap.to([progress, progressGlow], {
+            width: `${self.progress * 100}%`,
+            duration: 0.1
+          });
+        }
+      }
+    });
+
+    // Mask reveal animation for each item
+    items.forEach((item, index) => {
+      const mask = item.querySelector('.design-mask');
+      const img = item.querySelector('.design-img');
+      const caption = item.querySelector('.design-caption');
+      const frame = item.querySelector('.design-frame');
+      const inner = item.querySelector('.design-item-inner');
+      const overlay = item.querySelector('.design-overlay');
+      const shine = item.querySelector('.design-shine');
+
+      // Initial mask reveal on scroll
+      ScrollTrigger.create({
+        trigger: item,
+        containerAnimation: scrollTween,
+        start: 'left 80%',
+        onEnter: () => {
+          gsap.to(mask, {
+            scaleX: 0,
+            transformOrigin: 'right center',
+            duration: 0.8,
+            ease: 'power3.inOut',
+            delay: 0.1
+          });
+          gsap.to(caption, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: 0.5,
+            ease: 'power2.out'
+          });
+        }
+      });
+
+      // 3D Tilt effect on hover
+      item.addEventListener('mousemove', (e) => {
+        const rect = (item as HTMLElement).getBoundingClientRect();
+        const x = (e as MouseEvent).clientX - rect.left;
+        const y = (e as MouseEvent).clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / centerY * -8;
+        const rotateY = (x - centerX) / centerX * 8;
+
+        gsap.to(inner, {
+          rotateX: rotateX,
+          rotateY: rotateY,
+          scale: 1.02,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+
+        gsap.to(img, {
+          scale: 1.1,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+
+        gsap.to(overlay, {
+          opacity: 1,
+          duration: 0.3
+        });
+
+        gsap.to(frame, {
+          borderColor: 'rgba(201, 169, 110, 0.5)',
+          duration: 0.3
+        });
+
+        // Shine effect following mouse
+        const shineX = (x / rect.width) * 100;
+        const shineY = (y / rect.height) * 100;
+        gsap.set(shine, {
+          background: `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.15) 0%, transparent 50%)`
+        });
+      });
+
+      item.addEventListener('mouseleave', () => {
+        gsap.to(inner, {
+          rotateX: 0,
+          rotateY: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+
+        gsap.to(img, {
+          scale: 1,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+
+        gsap.to(overlay, {
+          opacity: 0,
+          duration: 0.3
+        });
+
+        gsap.to(frame, {
+          borderColor: 'rgba(201, 169, 110, 0)',
+          duration: 0.3
+        });
+
+        gsap.set(shine, {
+          background: 'none'
+        });
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initDesign);
+</script>
+
+<style>
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .design-gallery {
+    will-change: transform;
+    perspective: 1000px;
+  }
+
+  .design-item {
+    perspective: 1200px;
+  }
+
+  .design-item-inner {
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .design-img {
+    will-change: transform;
+    transition: transform 0.5s ease;
+  }
+
+  .design-mask {
+    will-change: transform;
+  }
+
+  .design-frame {
+    transition: border-color 0.3s ease;
+  }
+
+  .design-caption {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .design-progress-glow {
+    opacity: 0.5;
+  }
+
+  /* Mobile - same GSAP behavior */
+  @media (max-width: 1023px) {
+    .design-gallery-wrapper {
+      height: 100vh;
+    }
+
+    .design-gallery {
+      height: 100%;
+    }
+
+    .design-mask {
+      display: none !important;
+    }
+
+    .design-caption {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .design-item-inner,
+    .design-img,
+    .design-mask {
+      transition: none !important;
+    }
+  }
+</style>

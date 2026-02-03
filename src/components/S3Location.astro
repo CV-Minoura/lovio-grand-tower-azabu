@@ -1,0 +1,403 @@
+---
+// S3. Location Value Component
+// Premium 麻布エリア with Scroll Zoom, Sequential Pop, Cinematic Effects
+---
+
+<section id="location" data-section="P1-S3" class="relative py-32 md:py-48 bg-surface overflow-hidden">
+  <div class="container-wide">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <!-- Image Column -->
+      <div class="lg:col-span-7 relative">
+        <div class="location-image-wrapper relative overflow-hidden aspect-[4/3]">
+          <!-- Outer glow frame -->
+          <div class="location-frame absolute -inset-1 opacity-0">
+            <div class="absolute inset-0 border border-accent-gold/30"></div>
+            <div class="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-accent-gold"></div>
+            <div class="absolute -top-1 -right-1 w-4 h-4 border-t border-r border-accent-gold"></div>
+            <div class="absolute -bottom-1 -left-1 w-4 h-4 border-b border-l border-accent-gold"></div>
+            <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-accent-gold"></div>
+          </div>
+
+          <img
+            src="/images/3-1. 麻布エリア航空写真.png"
+            alt="麻布エリア航空写真"
+            class="location-image w-full h-full object-cover"
+            decoding="async"
+          />
+
+          <!-- Cinematic overlays -->
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-surface/80"></div>
+          <div class="location-vignette absolute inset-0 pointer-events-none"></div>
+          <div class="location-scan-line absolute inset-0 pointer-events-none opacity-0"></div>
+
+          <!-- Location Pin with pulse rings -->
+          <div class="location-pin absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0">
+            <div class="relative">
+              <div class="w-4 h-4 bg-accent-gold rounded-full relative z-10"></div>
+              <div class="pin-ring-1 absolute inset-0 w-4 h-4 border-2 border-accent-gold rounded-full"></div>
+              <div class="pin-ring-2 absolute -inset-2 w-8 h-8 border border-accent-gold/50 rounded-full"></div>
+              <div class="pin-ring-3 absolute -inset-4 w-12 h-12 border border-accent-gold/30 rounded-full"></div>
+            </div>
+            <div class="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
+              <span class="location-pin-text text-xs tracking-wider text-accent-gold font-medium opacity-0">LIVIO GRAND TOWER</span>
+            </div>
+          </div>
+
+          <!-- Landmark markers on map -->
+          <div class="landmark-markers absolute inset-0 pointer-events-none">
+            <div class="landmark-marker absolute top-[35%] left-[40%] opacity-0" data-name="麻布十番商店街">
+              <div class="w-2 h-2 bg-white/80 rounded-full"></div>
+            </div>
+            <div class="landmark-marker absolute top-[25%] left-[60%] opacity-0" data-name="六本木ヒルズ">
+              <div class="w-2 h-2 bg-white/80 rounded-full"></div>
+            </div>
+            <div class="landmark-marker absolute top-[20%] left-[45%] opacity-0" data-name="東京ミッドタウン">
+              <div class="w-2 h-2 bg-white/80 rounded-full"></div>
+            </div>
+            <div class="landmark-marker absolute top-[55%] left-[65%] opacity-0" data-name="有栖川宮記念公園">
+              <div class="w-2 h-2 bg-white/80 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Column -->
+      <div class="lg:col-span-5 location-text">
+        <div class="section-title text-left mb-0">
+          <p class="section-title-en opacity-0 translate-y-4">
+            <span class="title-char">L</span><span class="title-char">O</span><span class="title-char">C</span><span class="title-char">A</span><span class="title-char">T</span><span class="title-char">I</span><span class="title-char">O</span><span class="title-char">N</span>
+          </p>
+          <h2 class="section-title-jp opacity-0 translate-y-4 mt-4">麻布という価値</h2>
+        </div>
+
+        <div class="mt-10 space-y-6">
+          <p class="location-desc text-text-secondary leading-loose opacity-0 translate-y-4">
+            江戸の昔から武家屋敷が連なり、
+            明治以降は大使館や邸宅が立ち並ぶ麻布。
+            都心でありながら閑静な佇まいを守り続ける、
+            東京屈指のレジデンシャルエリアです。
+          </p>
+          <p class="location-desc text-text-secondary leading-loose opacity-0 translate-y-4">
+            この地に、全120邸のタワーレジデンスが誕生します。
+          </p>
+        </div>
+
+        <!-- Landmarks -->
+        <div class="mt-12 pt-8 border-t border-border">
+          <p class="nearby-label text-xs tracking-widest text-text-secondary mb-6 opacity-0 translate-y-4 flex items-center gap-2">
+            <span class="nearby-line w-0 h-[1px] bg-accent-gold"></span>
+            NEARBY
+          </p>
+          <ul class="space-y-4">
+            <li class="landmark-item flex justify-between items-center text-sm opacity-0 translate-x-4 group cursor-pointer" data-landmark="0">
+              <span class="text-text-secondary group-hover:text-text transition-colors">麻布十番商店街</span>
+              <div class="flex items-center gap-2">
+                <span class="landmark-distance text-accent-gold font-serif">
+                  <span class="landmark-num" data-num="3">0</span>分
+                </span>
+                <span class="landmark-walk text-xs text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity">徒歩</span>
+              </div>
+            </li>
+            <li class="landmark-item flex justify-between items-center text-sm opacity-0 translate-x-4 group cursor-pointer" data-landmark="1">
+              <span class="text-text-secondary group-hover:text-text transition-colors">六本木ヒルズ</span>
+              <div class="flex items-center gap-2">
+                <span class="landmark-distance text-accent-gold font-serif">
+                  <span class="landmark-num" data-num="8">0</span>分
+                </span>
+                <span class="landmark-walk text-xs text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity">徒歩</span>
+              </div>
+            </li>
+            <li class="landmark-item flex justify-between items-center text-sm opacity-0 translate-x-4 group cursor-pointer" data-landmark="2">
+              <span class="text-text-secondary group-hover:text-text transition-colors">東京ミッドタウン</span>
+              <div class="flex items-center gap-2">
+                <span class="landmark-distance text-accent-gold font-serif">
+                  <span class="landmark-num" data-num="12">0</span>分
+                </span>
+                <span class="landmark-walk text-xs text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity">徒歩</span>
+              </div>
+            </li>
+            <li class="landmark-item flex justify-between items-center text-sm opacity-0 translate-x-4 group cursor-pointer" data-landmark="3">
+              <span class="text-text-secondary group-hover:text-text transition-colors">有栖川宮記念公園</span>
+              <div class="flex items-center gap-2">
+                <span class="landmark-distance text-accent-gold font-serif">
+                  <span class="landmark-num" data-num="10">0</span>分
+                </span>
+                <span class="landmark-walk text-xs text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity">徒歩</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initLocation = () => {
+    const image = document.querySelector('.location-image');
+    const frame = document.querySelector('.location-frame');
+    const pin = document.querySelector('.location-pin');
+    const pinText = document.querySelector('.location-pin-text');
+    const pinRings = document.querySelectorAll('.pin-ring-1, .pin-ring-2, .pin-ring-3');
+    const scanLine = document.querySelector('.location-scan-line');
+    const titleChars = document.querySelectorAll('.location-text .title-char');
+    const titleJp = document.querySelector('#location .section-title-jp');
+    const descs = document.querySelectorAll('.location-desc');
+    const nearbyLabel = document.querySelector('.nearby-label');
+    const nearbyLine = document.querySelector('.nearby-line');
+    const landmarks = document.querySelectorAll('.landmark-item');
+    const landmarkMarkers = document.querySelectorAll('.landmark-marker');
+    const landmarkNums = document.querySelectorAll('.landmark-num');
+
+    // Initial image scale
+    gsap.set(image, { scale: 1.3 });
+
+    // Scroll-linked zoom out animation
+    ScrollTrigger.create({
+      trigger: '#location',
+      start: 'top 80%',
+      end: 'center center',
+      scrub: 1,
+      onUpdate: (self) => {
+        const scale = 1.3 - (self.progress * 0.3);
+        gsap.set(image, { scale });
+      }
+    });
+
+    // Frame reveal
+    ScrollTrigger.create({
+      trigger: '#location',
+      start: 'top 60%',
+      onEnter: () => {
+        gsap.to(frame, {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    // Pin animation with rings
+    ScrollTrigger.create({
+      trigger: '#location',
+      start: 'top 40%',
+      onEnter: () => {
+        // Show pin
+        gsap.to(pin, {
+          opacity: 1,
+          scale: 1,
+          duration: 0.5,
+          ease: 'back.out(2)'
+        });
+
+        // Animate rings outward
+        pinRings.forEach((ring, i) => {
+          gsap.fromTo(ring,
+            { scale: 0, opacity: 1 },
+            {
+              scale: 1 + (i * 0.5),
+              opacity: 0,
+              duration: 1.5,
+              delay: 0.3 + (i * 0.2),
+              repeat: -1,
+              repeatDelay: 1,
+              ease: 'power2.out'
+            }
+          );
+        });
+
+        // Pin text
+        gsap.to(pinText, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          delay: 0.5,
+          ease: 'power2.out'
+        });
+
+        // Scan line effect
+        gsap.to(scanLine, {
+          opacity: 0.5,
+          duration: 0.2,
+          onComplete: () => {
+            gsap.to(scanLine, {
+              opacity: 0,
+              duration: 0.3,
+              delay: 0.5
+            });
+          }
+        });
+      }
+    });
+
+    // Text animations
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.location-text',
+        start: 'top 70%'
+      }
+    });
+
+    // Title characters stagger
+    tl.to(titleChars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: 'power2.out'
+    })
+    .to(titleJp, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.2')
+    .to(descs, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out' }, '-=0.3')
+    .to(nearbyLabel, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' }, '-=0.2')
+    .to(nearbyLine, { width: '24px', duration: 0.4, ease: 'power2.out' }, '-=0.2');
+
+    // Landmarks sequential pop with count-up
+    landmarks.forEach((item, i) => {
+      const num = item.querySelector('.landmark-num');
+      const targetNum = parseInt(num?.getAttribute('data-num') || '0');
+      const marker = landmarkMarkers[i];
+
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 80%',
+        onEnter: () => {
+          // Item slide in
+          gsap.to(item, {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            delay: i * 0.1,
+            ease: 'power2.out'
+          });
+
+          // Number count up
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: targetNum,
+            duration: 1,
+            delay: i * 0.1 + 0.3,
+            ease: 'power2.out',
+            onUpdate: () => {
+              if (num) num.textContent = Math.round(obj.val).toString();
+            }
+          });
+
+          // Map marker pop
+          if (marker) {
+            gsap.to(marker, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              delay: i * 0.15 + 0.5,
+              ease: 'back.out(2)'
+            });
+          }
+        }
+      });
+
+      // Hover interaction - highlight marker on map
+      item.addEventListener('mouseenter', () => {
+        if (marker) {
+          gsap.to(marker.querySelector('div'), {
+            scale: 2,
+            backgroundColor: '#C9A96E',
+            duration: 0.3
+          });
+        }
+      });
+
+      item.addEventListener('mouseleave', () => {
+        if (marker) {
+          gsap.to(marker.querySelector('div'), {
+            scale: 1,
+            backgroundColor: 'rgba(255,255,255,0.8)',
+            duration: 0.3
+          });
+        }
+      });
+    });
+
+    // Initial marker scale
+    gsap.set(landmarkMarkers, { scale: 0 });
+  };
+
+  document.addEventListener('DOMContentLoaded', initLocation);
+</script>
+
+<style>
+  .location-image {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+  }
+
+  .location-vignette {
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+  }
+
+  .location-scan-line {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(201, 169, 110, 0.3) 50%,
+      transparent 100%
+    );
+    background-size: 100% 20px;
+    animation: scanMove 2s linear infinite;
+  }
+
+  @keyframes scanMove {
+    0% { background-position: 0 -100%; }
+    100% { background-position: 0 200%; }
+  }
+
+  .title-char {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+
+  .landmark-item {
+    transition: transform 0.3s ease;
+  }
+
+  .landmark-item:hover {
+    transform: translateX(8px);
+  }
+
+  .landmark-marker {
+    will-change: transform, opacity;
+  }
+
+  .landmark-marker div {
+    will-change: transform, background-color;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .pin-ring-1,
+  .pin-ring-2,
+  .pin-ring-3 {
+    will-change: transform, opacity;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .location-image,
+    .landmark-item,
+    .landmark-marker div {
+      transition: none !important;
+    }
+
+    .location-scan-line {
+      animation: none !important;
+    }
+
+    .pin-ring-1,
+    .pin-ring-2,
+    .pin-ring-3 {
+      animation: none !important;
+    }
+  }
+</style>

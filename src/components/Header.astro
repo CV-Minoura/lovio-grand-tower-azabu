@@ -1,0 +1,294 @@
+---
+// Header Component with Premium Scroll Effects
+// Hide/Show, Shrink, Blur Background
+---
+
+<header id="header" class="fixed top-0 left-0 right-0 z-[1000] transition-all duration-500">
+  <!-- Top Scroll Progress Bar -->
+  <div class="header-progress absolute top-0 left-0 h-[2px] w-0 bg-gradient-to-r from-accent-gold via-accent-light to-accent-gold z-10"></div>
+
+  <div class="header-inner container-wide flex items-center justify-between h-20 md:h-24 transition-all duration-500">
+    <!-- Logo -->
+    <a href="#" class="header-logo font-serif text-sm md:text-base tracking-[0.2em] text-text-primary hover:text-accent-gold transition-colors relative group">
+      <span class="logo-text">LIVIO GRAND TOWER</span>
+      <span class="logo-underline absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
+    </a>
+
+    <!-- Hamburger Button -->
+    <button id="menu-toggle" class="menu-toggle relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[1001]" aria-label="Menu">
+      <span class="menu-line w-6 h-[1px] bg-text-primary transition-all duration-300"></span>
+      <span class="menu-line w-6 h-[1px] bg-text-primary transition-all duration-300"></span>
+      <span class="menu-line w-6 h-[1px] bg-text-primary transition-all duration-300"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Fullscreen Menu -->
+<nav id="fullscreen-menu" class="fixed inset-0 z-[999] bg-background opacity-0 pointer-events-none transition-opacity duration-500">
+  <div class="h-full flex flex-col items-center justify-center">
+    <ul class="menu-items space-y-6 text-center">
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#introduction" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>CONCEPT</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#location" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>LOCATION</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#design" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>DESIGN</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#view" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>VIEW</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#interior" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>INTERIOR</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#quality" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>QUALITY</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#plan" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>PLAN</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#access" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>ACCESS</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+      <li class="menu-item opacity-0 translate-y-4">
+        <a href="#contact" class="menu-link font-serif text-2xl md:text-3xl tracking-wider hover:text-accent-gold transition-colors relative inline-block">
+          <span>CONTACT</span>
+          <span class="menu-link-line absolute -bottom-1 left-0 w-0 h-[1px] bg-accent-gold transition-all duration-300"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initHeader = () => {
+    const header = document.getElementById('header');
+    const headerInner = document.querySelector('.header-inner');
+    const headerProgress = document.querySelector('.header-progress');
+    const menuToggle = document.getElementById('menu-toggle');
+    const fullscreenMenu = document.getElementById('fullscreen-menu');
+    const menuItems = document.querySelectorAll('.menu-item');
+    const menuLines = document.querySelectorAll('.menu-line');
+    const logoText = document.querySelector('.logo-text');
+
+    let isMenuOpen = false;
+    let lastScrollY = 0;
+    let isHeaderHidden = false;
+
+    // Top progress bar
+    ScrollTrigger.create({
+      trigger: 'body',
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        gsap.to(headerProgress, {
+          width: `${self.progress * 100}%`,
+          duration: 0.1,
+          ease: 'none'
+        });
+      }
+    });
+
+    // Header hide/show on scroll with background
+    ScrollTrigger.create({
+      start: 'top -100',
+      onUpdate: (self) => {
+        const scrollY = self.scroll();
+        const direction = self.direction;
+
+        // Add background after scrolling
+        if (scrollY > 100) {
+          header?.classList.add('header-scrolled');
+        } else {
+          header?.classList.remove('header-scrolled');
+        }
+
+        // Hide header on scroll down, show on scroll up
+        if (direction === 1 && scrollY > 300 && !isHeaderHidden && !isMenuOpen) {
+          // Scrolling down
+          gsap.to(header, {
+            y: -100,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+          isHeaderHidden = true;
+        } else if (direction === -1 && isHeaderHidden) {
+          // Scrolling up
+          gsap.to(header, {
+            y: 0,
+            duration: 0.3,
+            ease: 'power2.out'
+          });
+          isHeaderHidden = false;
+        }
+
+        // Shrink header after scroll
+        if (scrollY > 200) {
+          gsap.to(headerInner, {
+            height: window.innerWidth >= 768 ? 64 : 56,
+            duration: 0.3
+          });
+          gsap.to(logoText, {
+            fontSize: window.innerWidth >= 768 ? '0.75rem' : '0.7rem',
+            duration: 0.3
+          });
+        } else {
+          gsap.to(headerInner, {
+            height: window.innerWidth >= 768 ? 96 : 80,
+            duration: 0.3
+          });
+          gsap.to(logoText, {
+            fontSize: window.innerWidth >= 768 ? '1rem' : '0.875rem',
+            duration: 0.3
+          });
+        }
+
+        lastScrollY = scrollY;
+      }
+    });
+
+    // Toggle menu
+    const toggleMenu = () => {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        // Show header if hidden
+        if (isHeaderHidden) {
+          gsap.to(header, { y: 0, duration: 0.3 });
+          isHeaderHidden = false;
+        }
+
+        // Open menu
+        fullscreenMenu?.classList.remove('opacity-0', 'pointer-events-none');
+        fullscreenMenu?.classList.add('opacity-100');
+
+        // Animate hamburger to X
+        gsap.to(menuLines[0], { rotation: 45, y: 6, duration: 0.3 });
+        gsap.to(menuLines[1], { opacity: 0, duration: 0.3 });
+        gsap.to(menuLines[2], { rotation: -45, y: -6, duration: 0.3 });
+
+        // Animate menu items
+        gsap.to(menuItems, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.05,
+          delay: 0.2,
+          ease: 'power2.out'
+        });
+
+        // Stop Lenis scroll
+        (window as any).lenis?.stop();
+      } else {
+        // Close menu
+        gsap.to(menuItems, {
+          opacity: 0,
+          y: 16,
+          duration: 0.3,
+          stagger: 0.02,
+          ease: 'power2.in'
+        });
+
+        setTimeout(() => {
+          fullscreenMenu?.classList.add('opacity-0', 'pointer-events-none');
+          fullscreenMenu?.classList.remove('opacity-100');
+        }, 300);
+
+        // Animate X to hamburger
+        gsap.to(menuLines[0], { rotation: 0, y: 0, duration: 0.3 });
+        gsap.to(menuLines[1], { opacity: 1, duration: 0.3 });
+        gsap.to(menuLines[2], { rotation: 0, y: 0, duration: 0.3 });
+
+        // Resume Lenis scroll
+        (window as any).lenis?.start();
+      }
+    };
+
+    menuToggle?.addEventListener('click', toggleMenu);
+
+    // Close menu on link click
+    document.querySelectorAll('#fullscreen-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMenuOpen) toggleMenu();
+      });
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isMenuOpen) toggleMenu();
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+<style>
+  #header {
+    will-change: transform;
+  }
+
+  .header-scrolled {
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+  }
+
+  .header-progress {
+    will-change: width;
+  }
+
+  .header-inner {
+    will-change: height;
+  }
+
+  .menu-toggle:hover .menu-line {
+    background-color: var(--color-accent-gold);
+  }
+
+  .menu-line {
+    transform-origin: center;
+  }
+
+  #fullscreen-menu {
+    transition: opacity 0.5s ease;
+  }
+
+  .menu-link:hover .menu-link-line {
+    width: 100%;
+  }
+
+  .logo-text {
+    will-change: font-size;
+  }
+</style>
