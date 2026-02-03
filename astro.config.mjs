@@ -1,14 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: node({
-    mode: 'standalone'
-  }),
+  output: 'static',
   image: {
     // 画像最適化を無効化 - 高品質維持
     service: {
