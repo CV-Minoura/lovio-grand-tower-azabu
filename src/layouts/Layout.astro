@@ -25,20 +25,23 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="robots" content="noindex, nofollow" />
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- Preload: Hero Image (LCP) -->
+    <link rel="preload" as="image" href="/images/hero.webp" type="image/webp" fetchpriority="high" />
+
     <!-- Preconnect: Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Fonts: display=swap for better LCP -->
+    <!-- Google Fonts: Minimal weights for performance -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@500&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@500&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -57,13 +60,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
     <title>{title}</title>
 
-    <!-- Critical CSS for fonts fallback -->
+    <!-- Critical CSS for fonts -->
     <style is:inline>
       body {
-        font-family: "Inter", "Noto Sans JP", system-ui, -apple-system, sans-serif;
+        font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
       }
-      h1, h2, h3, h4, h5, h6, .font-serif {
-        font-family: "Cormorant Garamond", "Noto Serif JP", Georgia, serif;
+      h1, h2, h3, h4, h5, h6, .font-serif, .font-display, .text-display {
+        font-family: "Cormorant Garamond", "Noto Serif JP", "Hiragino Mincho ProN", Georgia, serif;
       }
     </style>
   </head>
