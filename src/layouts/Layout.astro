@@ -32,16 +32,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Fonts: Minimal weights for performance -->
+    <!-- Google Fonts: English serif only (Japanese uses system fonts) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+JP:wght@500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap"
         rel="stylesheet"
       />
     </noscript>
@@ -66,7 +66,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
         font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif;
       }
       h1, h2, h3, h4, h5, h6, .font-serif, .font-display, .text-display {
-        font-family: "Cormorant Garamond", "Noto Serif JP", "Hiragino Mincho ProN", Georgia, serif;
+        font-family: "Cormorant Garamond", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", Georgia, serif;
       }
     </style>
   </head>
